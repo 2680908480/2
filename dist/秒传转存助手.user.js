@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.3
+// @version        3.1.4
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
-// @homepage       https://github.com/tousakasp/rapid-upload-userscript-rinsp
 // @match          *://pan.baidu.com/disk/home*
 // @match          *://pan.baidu.com/disk/main*
 // @match          *://pan.baidu.com/disk/synchronization*
@@ -20,7 +19,7 @@
 // @license        GPLv3
 // @icon           data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABBUlEQVR4AZTTJRBUURTH4TtDwXuPdPrgbhHXiksf3CPucRNScHd3d3d3uO9bKeu7b79+fun8Q17CNHyMMUqaiPE4fEyYVjjGNKnNwQ4lpgV8lManEfwfosLHEGPU1N3ZnAv4qlT+NiQ56uPWSjKBrztUSnIaB66sY1vgxgxoMXB5NbsCB9rxcB5fN2M5/16nCFxeS6YTezpzsB1Pu/C2O7/78/99eYBYHXh+gqdHObGIK4GHgevjVIt1AgAnhvE4cGe8euoHbizgYuD2RGgx8O0RpwIPRmsmJDGqcrANd3pLo/qVr03hUlcpfSwf0/vD3JwkPdPK5/zhkOz+/f1FIDv/RcnOAEjywH/DhgADAAAAAElFTkSuQmCC
 // @namespace      com.github.tousakasp
-// @homepageURL    https://github.com/tousakasp/rapid-upload-userscript-rinsp
+// @homepageURL    
 // @description:en input bdlink to get files or get bdlink for Baidu™ WebDisk.
 // @compatible     firefox Violentmonkey
 // @compatible     firefox Tampermonkey
@@ -39,7 +38,7 @@
 // @run-at         document-body
 // @connect        baidu.com
 // @connect        baidupcs.com
-// @connect        cdn.jsdelivr.net
+// @connect        unpkg.com
 // @connect        *
 // @downloadURL    https://raw.githubusercontent.com/tousakasp/rapid-upload-userscript-rinsp/main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js
 // @updateURL      https://cdn.jsdelivr.net/gh/tousakasp/rapid-upload-userscript-rinsp@main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js
@@ -62,7 +61,7 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>github版使用jsdelivr更新频道</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -157,9 +156,9 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.3"; // 当前版本号
-var updateDate = "23.6.16"; // 更新弹窗显示的日期
-var updateInfoVer = "3.1.3"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+var version = "3.1.4"; // 当前版本号
+var updateDate = "23.6.21"; // 更新弹窗显示的日期
+var updateInfoVer = "3.1.4"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 var swalCssVer = "3.1.3"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
 var baiduMobilePage = "baidu.com/wap/home";
@@ -172,12 +171,12 @@ var bdlinkPrefix = "https://pan.baidu.com/#bdlink="; // 一键秒传链接的前
 var commandList = ["set", "gen", "info"]; // 转存输入框内支持输入的命令
 var UA = "netdisk;"; // 自定义User-Agent
 var extCssUrl = {
-    Default: "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@5/default.css",
-    Dark: "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.min.css",
-    "WordPress Admin": "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-wordpress-admin@5/wordpress-admin.min.css",
-    "Material UI": "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui@5/material-ui.min.css",
-    Bulma: "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5/bulma.min.css",
-    "Bootstrap 4": "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css",
+    Default: "https://unpkg.com/@sweetalert2/theme-default@5.0.15/default.min.css",
+    Dark: "https://unpkg.com/@sweetalert2/theme-dark@5.0.15/dark.min.css",
+    "WordPress Admin": "https://unpkg.com/@sweetalert2/theme-wordpress-admin@5.0.15/wordpress-admin.min.css",
+    "Material UI": "https://unpkg.com/@sweetalert2/theme-material-ui@5.0.15/material-ui.min.css",
+    Bulma: "https://unpkg.com/@sweetalert2/theme-bulma@5.0.15/bulma.min.css",
+    "Bootstrap 4": "https://unpkg.com/@sweetalert2/theme-bootstrap-4@5.0.15/bootstrap-4.min.css",
 }; // 各主题包对应的url
 var appError = {
     SwalCssInvalid: "\u6837\u5F0F\u5305\u6570\u636E\u9519\u8BEF, \u81EA\u52A8\u4F7F\u7528\u5185\u7F6E\u6837\u5F0F (\u8BF7\u70B9\u786E\u5B9A)",
@@ -1041,11 +1040,14 @@ var ajax_assign = (undefined && undefined.__assign) || function () {
     return ajax_assign.apply(this, arguments);
 };
 
+var DEBUG = false;
 function ajax(config, callback, failback) {
     GM_xmlhttpRequest(ajax_assign(ajax_assign({}, config), { onload: function (r) {
             // console.log(r); // debug
             if (Math.floor(r.status / 100) === 2) {
-                console.info("%s version: %s 接口返回: %s", TAG, version, JSON.stringify(r.response)); // user debug
+                if (DEBUG) {
+                    console.info("%s version: %s 接口返回: %s", TAG, version, JSON.stringify(r.response)); // user debug
+                }
                 callback(r);
             }
             else

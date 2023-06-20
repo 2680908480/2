@@ -4,9 +4,9 @@
  * @Description: 存放各种全局常量对象
  */
 
-export const version = "3.1.3"; // 当前版本号
-export const updateDate = "23.6.16"; // 更新弹窗显示的日期
-export const updateInfoVer = "3.1.3"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+export const version = "3.1.4"; // 当前版本号
+export const updateDate = "23.6.21"; // 更新弹窗显示的日期
+export const updateInfoVer = "3.1.4"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 export const swalCssVer = "3.1.3"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 export const locUrl: string = location.href;
 export const baiduMobilePage = "baidu.com/wap/home";
@@ -19,16 +19,16 @@ export const bdlinkPrefix = "https://pan.baidu.com/#bdlink="; // 一键秒传链
 export const commandList = ["set", "gen", "info"]; // 转存输入框内支持输入的命令
 export const UA = "netdisk;"; // 自定义User-Agent
 export const extCssUrl = {
-  Default: "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-default@5/default.css",
-  Dark: "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@5/dark.min.css",
+  Default: "https://unpkg.com/@sweetalert2/theme-default@5.0.15/default.min.css",
+  Dark: "https://unpkg.com/@sweetalert2/theme-dark@5.0.15/dark.min.css",
   "WordPress Admin":
-    "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-wordpress-admin@5/wordpress-admin.min.css",
+    "https://unpkg.com/@sweetalert2/theme-wordpress-admin@5.0.15/wordpress-admin.min.css",
   "Material UI":
-    "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui@5/material-ui.min.css",
+    "https://unpkg.com/@sweetalert2/theme-material-ui@5.0.15/material-ui.min.css",
   Bulma:
-    "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5/bulma.min.css",
+    "https://unpkg.com/@sweetalert2/theme-bulma@5.0.15/bulma.min.css",
   "Bootstrap 4":
-    "https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css",
+    "https://unpkg.com/@sweetalert2/theme-bootstrap-4@5.0.15/bootstrap-4.min.css",
 }; // 各主题包对应的url
 export const appError = {
   SwalCssInvalid: `样式包数据错误, 自动使用内置样式 (请点确定)`,

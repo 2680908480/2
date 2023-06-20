@@ -120,7 +120,7 @@ module.exports = {
           "unsafeWindow",
         ],
         "run-at": "document-body",
-        connect: ["baidu.com", "baidupcs.com", "cdn.jsdelivr.net", "*"],
+        connect: ["baidu.com", "baidupcs.com", "unpkg.com", "*"],
         downloadURL: "https://raw.githubusercontent.com/tousakasp/rapid-upload-userscript-rinsp/main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js",
         updateURL: "https://cdn.jsdelivr.net/gh/tousakasp/rapid-upload-userscript-rinsp@main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js",
         require: [

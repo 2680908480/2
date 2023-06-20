@@ -1,9 +1,8 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.3
+// @version        3.1.4
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
-// @homepage       https://github.com/tousakasp/rapid-upload-userscript-rinsp
 // @match          *://pan.baidu.com/disk/home*
 // @match          *://pan.baidu.com/disk/main*
 // @match          *://pan.baidu.com/disk/synchronization*
@@ -20,7 +19,7 @@
 // @license        GPLv3
 // @icon           data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABBUlEQVR4AZTTJRBUURTH4TtDwXuPdPrgbhHXiksf3CPucRNScHd3d3d3uO9bKeu7b79+fun8Q17CNHyMMUqaiPE4fEyYVjjGNKnNwQ4lpgV8lManEfwfosLHEGPU1N3ZnAv4qlT+NiQ56uPWSjKBrztUSnIaB66sY1vgxgxoMXB5NbsCB9rxcB5fN2M5/16nCFxeS6YTezpzsB1Pu/C2O7/78/99eYBYHXh+gqdHObGIK4GHgevjVIt1AgAnhvE4cGe8euoHbizgYuD2RGgx8O0RpwIPRmsmJDGqcrANd3pLo/qVr03hUlcpfSwf0/vD3JwkPdPK5/zhkOz+/f1FIDv/RcnOAEjywH/DhgADAAAAAElFTkSuQmCC
 // @namespace      com.github.tousakasp
-// @homepageURL    https://github.com/tousakasp/rapid-upload-userscript-rinsp
+// @homepageURL    
 // @description:en input bdlink to get files or get bdlink for Baidu™ WebDisk.
 // @compatible     firefox Violentmonkey
 // @compatible     firefox Tampermonkey
@@ -39,7 +38,7 @@
 // @run-at         document-body
 // @connect        baidu.com
 // @connect        baidupcs.com
-// @connect        cdn.jsdelivr.net
+// @connect        unpkg.com
 // @connect        *
 // @downloadURL    https://raw.githubusercontent.com/tousakasp/rapid-upload-userscript-rinsp/main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js
 // @updateURL      https://cdn.jsdelivr.net/gh/tousakasp/rapid-upload-userscript-rinsp@main/dist/%E7%A7%92%E4%BC%A0%E8%BD%AC%E5%AD%98%E5%8A%A9%E6%89%8B.user.js

@@ -8,6 +8,8 @@
 
 import { ajaxError, TAG, version } from "./const";
 
+const DEBUG = false;
+
 export default function ajax(
   config: any,
   callback: (response: any) => void,
@@ -18,12 +20,14 @@ export default function ajax(
     onload: (r: any) => {
       // console.log(r); // debug
       if (Math.floor(r.status / 100) === 2) {
-        console.info(
-          "%s version: %s 接口返回: %s",
-          TAG,
-          version,
-          JSON.stringify(r.response)
-        ); // user debug
+        if (DEBUG) {
+          console.info(
+            "%s version: %s 接口返回: %s",
+            TAG,
+            version,
+            JSON.stringify(r.response)
+          ); // user debug
+        }
         callback(r);
       } else failback(r.status);
     },
