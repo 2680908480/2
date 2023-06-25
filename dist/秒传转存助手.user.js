@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.4
+// @version        3.1.5
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
 // @match          *://pan.baidu.com/disk/home*
@@ -61,7 +61,7 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -156,8 +156,8 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.4"; // 当前版本号
-var updateDate = "23.6.21"; // 更新弹窗显示的日期
+var version = "3.1.5"; // 当前版本号
+var updateDate = "23.6.25"; // 更新弹窗显示的日期
 var updateInfoVer = "3.1.4"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 var swalCssVer = "3.1.3"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
@@ -1788,7 +1788,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
 
 
 
-
 var host = location.host;
 var listLimit = 10000;
 var syncPathPrefix = "/_pcs_.workspace";
@@ -1802,7 +1801,6 @@ var tpl_url = "https://" + host + "/share/tplconfig?fields=sign,timestamp&channe
 var sharedownload_url = "https://" + host + "/api/sharedownload?channel=chunlei&clienttype=12&web=1&app_id=250528";
 var sharelist_url = "https://" + host + "/share/list?showempty=0&num=" + listLimit + "&channel=chunlei&web=1&app_id=250528&clienttype=0";
 var syncdownload_url = "https://" + host + "/api/download";
-var testPath = "/apps/生成秒传测试文件.mengzonefire";
 var pcs_url = "https://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&method=download";
 var illegalPathPattern = /[\\":*?<>|]/g; // 匹配路径中的非法字符
 var getBdstoken; // 获取bdstoken的实现
@@ -1826,49 +1824,49 @@ function baiduErrno(errno) {
     switch (errno) {
         case 31045:
         case -6:
-            return "\u8BA4\u8BC1\u5931\u8D25(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8BA4\u8BC1\u5931\u8D25-6\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "认证失败, 请重新登入, 刷新页面";
         case -7:
-            return "\u8F6C\u5B58\u8DEF\u5F84\u542B\u6709\u975E\u6CD5\u5B57\u7B26(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8F6C\u5B58\u8DEF\u5F84\u542B\u6709\u975E\u6CD5\u5B57\u7B26-7\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "转存路径含有非法字符, 请改名后重试";
         case -8:
             return "路径下存在同名文件";
         case -9:
             return "验证已过期, 请刷新页面";
         case 400:
-            return "\u8BF7\u6C42\u9519\u8BEF(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8BF7\u6C42\u9519\u8BEF-400\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "请求错误";
         case 9019:
         case 403:
-            return "\u63A5\u53E3\u9650\u5236\u8BBF\u95EE(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u63A5\u53E3\u9650\u5236\u8BBF\u95EE-403\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "接口限制访问";
         case 404:
-            return "\u79D2\u4F20\u672A\u751F\u6548(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u79D2\u4F20\u672A\u751F\u6548-404\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "秒传未生效";
         case 114:
-            return "\u8F6C\u5B58\u5931\u8D25-v2\u63A5\u53E3(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8F6C\u5B58\u5931\u8D25-v2\u63A5\u53E3-114\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "转存失败";
         case 514:
-            return "\u8BF7\u6C42\u5931\u8D25(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8BF7\u6C42\u5931\u8D25-514\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "请求失败, 常见百度问题, 请稍后重试";
         case 1919:
-            return "\u6587\u4EF6\u5DF2\u88AB\u548C\u8C10(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u6587\u4EF6\u5DF2\u88AB\u548C\u8C10-1919\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "文件已被和谐";
         case 996:
-            return "md5\u83B7\u53D6\u5931\u8D25(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#md5-\u83B7\u53D6\u5931\u8D25-996\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "md5获取失败";
         case 2:
-            return "\u8F6C\u5B58\u5931\u8D25-v1\u63A5\u53E3(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u8F6C\u5B58\u5931\u8D25-v1\u63A5\u53E3-2\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "转存失败, 接口可能限制了IP, 请改IP重试, VPN海外IP更佳";
         case -10:
             return "网盘容量已满";
         case 500:
         case 502:
         case 503:
-            return "\u670D\u52A1\u5668\u9519\u8BEF(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u670D\u52A1\u5668\u9519\u8BEF-50x\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "服务器错误, 请稍后重试";
         case 31066:
         case 909:
             return "路径不存在/云端文件已损坏";
         case 900:
             return "路径为文件夹, 不支持生成秒传";
         case 31039:
-            return "\u670D\u52A1\u5668\u9519\u8BEF(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u670D\u52A1\u5668\u9519\u8BEF-31039\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "转存失败, 秒传文件名冲突";
         case 110:
             return "请先登录百度账号";
         case 9013:
             return "账号被限制, 尝试 更换账号 或 等待一段时间再重试";
         default:
-            return "\u672A\u77E5\u9519\u8BEF(\u8BF7\u770B\u6587\u6863:<a href=\"" + doc2.shareDoc + "#\u672A\u77E5\u9519\u8BEF\" " + linkStyle + ">\u8F7D\u70B9</a>)";
+            return "不明错误";
     }
 } // 自定义百度api返回errno的报错
 
@@ -1958,7 +1956,7 @@ function parsefileInfo(fileInfoList) {
         failBranchList.forEach(function (item) {
             failBranchInfo += "<p>" + item.path + "</p>";
         });
-        failedInfo += "<details class=\"mzf_details mzf_details_branch\"><summary><svg class=\"mzf_arrow\" width=\"16\" height=\"7\"><polyline points=\"0,0 8,7 16,0\"/></svg><b>" + baiduErrno(Number(failCode)) + "(#" + Number(failCode) + "):</b>" + copyFailBranchList + "</summary></details><div class=\"mzf_content\">" + failBranchInfo + "</div>";
+        failedInfo += "<details class=\"mzf_details mzf_details_branch\"><summary><svg class=\"mzf_arrow\" width=\"16\" height=\"7\"><polyline points=\"0,0 8,7 16,0\"/></svg><b>" + baiduErrno(Number(failCode)) + " (#" + Number(failCode) + "):</b>" + copyFailBranchList + "</summary></details><div class=\"mzf_content\">" + failBranchInfo + "</div>";
     };
     for (var failCode in failCodeDic) {
         _loop_1(failCode);

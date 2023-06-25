@@ -57,11 +57,7 @@ export function parsefileInfo(fileInfoList: Array<FileInfo>) {
     failBranchList.forEach((item: any) => {
       failBranchInfo += `<p>${item.path}</p>`;
     });
-    failedInfo += `<details class="mzf_details mzf_details_branch"><summary><svg class="mzf_arrow" width="16" height="7"><polyline points="0,0 8,7 16,0"/></svg><b>${baiduErrno(
-      Number(failCode)
-    )}(#${Number(
-      failCode
-    )}):</b>${copyFailBranchList}</summary></details><div class="mzf_content">${failBranchInfo}</div>`;
+    failedInfo += `<details class="mzf_details mzf_details_branch"><summary><svg class="mzf_arrow" width="16" height="7"><polyline points="0,0 8,7 16,0"/></svg><b>${baiduErrno(Number(failCode))} (#${Number(failCode)}):</b>${copyFailBranchList}</summary></details><div class="mzf_content">${failBranchInfo}</div>`;
   }
   if (failedInfo)
     failedInfo = `<details class="mzf_details"><summary><svg class="mzf_arrow" width="16" height="7"><polyline points="0,0 8,7 16,0"/></svg><b>失败文件列表(点这里看失败原因):</b>${copyFailList}</summary></details><div class="mzf_content">${failedInfo}</div>`;
