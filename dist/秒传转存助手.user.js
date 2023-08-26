@@ -192,7 +192,7 @@ var doc2 = {
 var linkStyle = 'class="mzf_link" rel="noopener noreferrer" target="_blank"';
 var btnStyle = 'class="mzf_btn" rel="noopener noreferrer" target="_blank"';
 var bdlinkPattern = /#bdlink=([\da-zA-Z+/=]+)/; // b64可能出现的字符: 大小写字母a-zA-Z, 数字0-9, +, /, = (=用于末尾补位)
-var htmlDocument = "<p class=\"mzf_text\">\u79D2\u4F20\u65E0\u6548</p>";
+// export const htmlDocument = `<p class="mzf_text">秒传无效</p>`;
 // export const htmlAboutBdlink = `什么是一键秒传?: <a href="${doc2.bdlinkDoc}" ${linkStyle}>文档载点</a>`;
 var copyFailList = '<a id="copy_fail_list" class="mzf_btn2">复制列表</a>';
 var copyFailBranchList = '<a id="copy_fail_branch_list" class="mzf_btn2">复制列表</a>';
@@ -564,7 +564,6 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-
 var Swalbase = /** @class */ (function () {
     function Swalbase(rapiduploadTask, generatebdlinkTask) {
         this.rapiduploadTask = rapiduploadTask;
@@ -751,8 +750,7 @@ var Swalbase = /** @class */ (function () {
             inputValue: GM_getValue("with_path"),
             inputPlaceholder: "导出文件夹目录结构",
         }; // 全部失败不显示此checkbox, 22.5.22: 全部失败也显示
-        var html = (isGen ? htmlDocument : "") + // 生成模式下添加文档入口
-            (parseResult.htmlInfo && isGen ? "<br>" : "") +
+        var html = (parseResult.htmlInfo && isGen ? "<br>" : "") +
             parseResult.htmlInfo; // 添加失败列表, 生成模式下添加顶部空行分隔
         var htmlFooter = "";
         if (htmlFooter)

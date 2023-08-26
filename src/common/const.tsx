@@ -52,7 +52,7 @@ export const linkStyle =
 export const btnStyle =
   'class="mzf_btn" rel="noopener noreferrer" target="_blank"';
 export const bdlinkPattern = /#bdlink=([\da-zA-Z+/=]+)/; // b64可能出现的字符: 大小写字母a-zA-Z, 数字0-9, +, /, = (=用于末尾补位)
-export const htmlDocument = `<p class="mzf_text">秒传无效</p>`;
+// export const htmlDocument = `<p class="mzf_text">秒传无效</p>`;
 // export const htmlAboutBdlink = `什么是一键秒传?: <a href="${doc2.bdlinkDoc}" ${linkStyle}>文档载点</a>`;
 export const copyFailList =
   '<a id="copy_fail_list" class="mzf_btn2">复制列表</a>';

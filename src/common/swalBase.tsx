@@ -24,9 +24,7 @@ import {
 } from "@/baidu/common/const";
 import GeneratebdlinkTask from "@/baidu/common/generatebdlinkTask";
 import RapiduploadTask from "@/baidu/common/rapiduploadTask";
-import {
-  htmlDocument,
-} from "./const";
+
 import { DuParser, parseQueryLink } from "./duParser";
 import { SwalConfig } from "./swalConfig";
 import {
@@ -211,7 +209,6 @@ export default class Swalbase {
       inputPlaceholder: "导出文件夹目录结构",
     }; // 全部失败不显示此checkbox, 22.5.22: 全部失败也显示
     let html =
-      (isGen ? htmlDocument : "") + // 生成模式下添加文档入口
       (parseResult.htmlInfo && isGen ? "<br>" : "") +
       parseResult.htmlInfo; // 添加失败列表, 生成模式下添加顶部空行分隔
     let htmlFooter = "";
