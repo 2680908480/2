@@ -4,10 +4,10 @@
  * @Description: 存放各种全局常量对象
  */
 
-export const version = "3.1.5"; // 当前版本号
-export const updateDate = "23.6.25"; // 更新弹窗显示的日期
-export const updateInfoVer = "3.1.4"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
-export const swalCssVer = "3.1.3"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
+export const version = "3.1.6"; // 当前版本号
+export const updateDate = "23.8.26"; // 更新弹窗显示的日期
+export const updateInfoVer = "3.1.6"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+export const swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 export const locUrl: string = location.href;
 export const baiduMobilePage = "baidu.com/wap/home";
 export const baiduNewPage = "baidu.com/disk/main"; // 匹配新版度盘界面
@@ -52,8 +52,8 @@ export const linkStyle =
 export const btnStyle =
   'class="mzf_btn" rel="noopener noreferrer" target="_blank"';
 export const bdlinkPattern = /#bdlink=([\da-zA-Z+/=]+)/; // b64可能出现的字符: 大小写字母a-zA-Z, 数字0-9, +, /, = (=用于末尾补位)
-export const htmlDocument = `<p class="mzf_text">秒传无效,防和谐等 可参考秒传文档<a href="${doc2.shareDoc}" ${btnStyle}><span class="text" style="width: auto;">载点</span></a></p>`;
-export const htmlAboutBdlink = `什么是一键秒传?: <a href="${doc2.bdlinkDoc}" ${linkStyle}>文档载点</a>`;
+export const htmlDocument = `<p class="mzf_text">秒传无效</p>`;
+// export const htmlAboutBdlink = `什么是一键秒传?: <a href="${doc2.bdlinkDoc}" ${linkStyle}>文档载点</a>`;
 export const copyFailList =
   '<a id="copy_fail_list" class="mzf_btn2">复制列表</a>';
 export const copyFailBranchList =

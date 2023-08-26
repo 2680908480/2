@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.5
+// @version        3.1.6
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
 // @match          *://pan.baidu.com/disk/home*
@@ -61,14 +61,14 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 149:
 /***/ ((module) => {
 
-module.exports = "/*自定义单选框样式*/\r\n.mzf_check {\r\n  display: inline-block;\r\n  background-color: white;\r\n  border-radius: 5px;\r\n  border: 1px solid #d3d3d3;\r\n  width: 20px;\r\n  height: 20px;\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  line-height: 20px;\r\n  margin-left: 10px;\r\n}\r\n.mzf_check_ori:checked + .mzf_check {\r\n  background-color: #eee;\r\n}\r\n.mzf_check_ori:checked + .mzf_check::after {\r\n  content: \"✓\";\r\n}\r\n.mzf_check_ori {\r\n  display: none;\r\n}\r\n\r\n/*新版度盘页面的按钮样式(直接拷贝)*/\r\n.mzf_new_btn {\r\n  -webkit-text-size-adjust: 100%;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-tap-highlight-color: transparent;\r\n  vertical-align: middle;\r\n  font: inherit;\r\n  overflow: visible;\r\n  text-transform: none;\r\n  font-family: SFUIText, PingFangSC-Regular, Helvetica Neue, Helvetica, Arial,\r\n    sans-serif;\r\n  display: inline-block;\r\n  line-height: 1;\r\n  white-space: nowrap;\r\n  cursor: pointer;\r\n  background: #fff;\r\n  text-align: center;\r\n  box-sizing: border-box;\r\n  outline: 0;\r\n  margin: 0;\r\n  transition: 0.1s;\r\n  color: #fff;\r\n  background-color: #06a7ff;\r\n  font-weight: 700;\r\n  padding: 8px 24px;\r\n  height: 32px;\r\n  font-size: 14px;\r\n  border-radius: 16px;\r\n  border: none;\r\n  margin-left: 8px;\r\n}\r\n#mzf-rapid-input.swal2-textarea {\r\n  height: 10em;\r\n}"
+module.exports = "/*自定义单选框样式*/\r\n.mzf_check {\r\n  display: inline-block;\r\n  background-color: white;\r\n  border-radius: 5px;\r\n  border: 1px solid #d3d3d3;\r\n  width: 20px;\r\n  height: 20px;\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  line-height: 20px;\r\n  margin-left: 10px;\r\n}\r\n.mzf_check_ori:checked + .mzf_check {\r\n  background-color: #eee;\r\n}\r\n.mzf_check_ori:checked + .mzf_check::after {\r\n  content: \"✓\";\r\n}\r\n.mzf_check_ori {\r\n  display: none;\r\n}\r\n\r\n/*新版度盘页面的按钮样式(直接拷贝)*/\r\n.mzf_new_btn {\r\n  -webkit-text-size-adjust: 100%;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-tap-highlight-color: transparent;\r\n  vertical-align: middle;\r\n  font: inherit;\r\n  overflow: visible;\r\n  text-transform: none;\r\n  font-family: SFUIText, PingFangSC-Regular, Helvetica Neue, Helvetica, Arial,\r\n    sans-serif;\r\n  display: inline-block;\r\n  line-height: 1;\r\n  white-space: nowrap;\r\n  cursor: pointer;\r\n  background: #fff;\r\n  text-align: center;\r\n  box-sizing: border-box;\r\n  outline: 0;\r\n  margin: 0;\r\n  transition: 0.1s;\r\n  color: #fff;\r\n  background-color: #06a7ff;\r\n  font-weight: 700;\r\n  padding: 8px 24px;\r\n  height: 32px;\r\n  font-size: 14px;\r\n  border-radius: 16px;\r\n  border: none;\r\n  margin-left: 8px;\r\n}\r\n#mzf-rapid-input.swal2-textarea {\r\n  height: 10em;\r\n}\r\n#mzf-accesstoken-input {\r\n  background: rgb(255, 252, 222);\r\n  font-size: 0.8em;\r\n  margin-left: 0;\r\n  margin-right: 0;\r\n}\r\n#mzf-accesstoken-input.mzf-auto-filled {\r\n  background: #EEE;\r\n}\r\n#mzf-accesstoken-acquire {\r\n  font-size: 0.8em;\r\n}"
 
 /***/ }),
 
@@ -156,10 +156,10 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.5"; // 当前版本号
-var updateDate = "23.6.25"; // 更新弹窗显示的日期
-var updateInfoVer = "3.1.4"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
-var swalCssVer = "3.1.3"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
+var version = "3.1.6"; // 当前版本号
+var updateDate = "23.8.26"; // 更新弹窗显示的日期
+var updateInfoVer = "3.1.6"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+var swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
 var baiduMobilePage = "baidu.com/wap/home";
 var baiduNewPage = "baidu.com/disk/main"; // 匹配新版度盘界面
@@ -192,8 +192,8 @@ var doc2 = {
 var linkStyle = 'class="mzf_link" rel="noopener noreferrer" target="_blank"';
 var btnStyle = 'class="mzf_btn" rel="noopener noreferrer" target="_blank"';
 var bdlinkPattern = /#bdlink=([\da-zA-Z+/=]+)/; // b64可能出现的字符: 大小写字母a-zA-Z, 数字0-9, +, /, = (=用于末尾补位)
-var htmlDocument = "<p class=\"mzf_text\">\u79D2\u4F20\u65E0\u6548,\u9632\u548C\u8C10\u7B49 \u53EF\u53C2\u8003\u79D2\u4F20\u6587\u6863<a href=\"" + doc2.shareDoc + "\" " + btnStyle + "><span class=\"text\" style=\"width: auto;\">\u8F7D\u70B9</span></a></p>";
-var htmlAboutBdlink = "\u4EC0\u4E48\u662F\u4E00\u952E\u79D2\u4F20?: <a href=\"" + doc2.bdlinkDoc + "\" " + linkStyle + ">\u6587\u6863\u8F7D\u70B9</a>";
+var htmlDocument = "<p class=\"mzf_text\">\u79D2\u4F20\u65E0\u6548</p>";
+// export const htmlAboutBdlink = `什么是一键秒传?: <a href="${doc2.bdlinkDoc}" ${linkStyle}>文档载点</a>`;
 var copyFailList = '<a id="copy_fail_list" class="mzf_btn2">复制列表</a>';
 var copyFailBranchList = '<a id="copy_fail_branch_list" class="mzf_btn2">复制列表</a>';
 var copySuccessList = '<a id="copy_success_list" class="mzf_btn2">复制列表</a>';
@@ -246,7 +246,7 @@ DuParser.parseDu_v1 = function parseDu_v1(szUrl) {
         return z
             .trim()
             .fromBase64()
-            .match(/([\s\S]+)\|([\d]{1,20})\|([\da-f]{32})\|([\da-f]{32})/i);
+            .match(/([\s\S]+)\|([\d]{1,20})\|([\da-f]{32})(?:\|([\da-f]{32}))?/i);
     })
         .filter(function (z) {
         return z;
@@ -254,7 +254,7 @@ DuParser.parseDu_v1 = function parseDu_v1(szUrl) {
         .map(function (info) {
         return {
             md5: info[3],
-            md5s: info[4],
+            md5s: info[4] || '',
             size: Number.parseInt(info[2]),
             path: info[1],
         };
@@ -267,7 +267,7 @@ DuParser.parseDu_v2 = function parseDu_v2(szUrl) {
         // unsigned long long: 0~18446744073709551615
         return z
             .trim()
-            .match(/-length=([\d]{1,20}) -md5=([\da-f]{32}) -slicemd5=([\da-f]{32})[\s\S]+"([\s\S]+)"/i);
+            .match(/-length=([\d]{1,20}) -md5=([\da-f]{32})(?: -slicemd5=([\da-f]{32}))?[\s\S]+"([\s\S]+)"/i);
     })
         .filter(function (z) {
         return z;
@@ -275,7 +275,7 @@ DuParser.parseDu_v2 = function parseDu_v2(szUrl) {
         .map(function (info) {
         return {
             md5: info[2],
-            md5s: info[3],
+            md5s: info[3] || '',
             size: Number.parseInt(info[1]),
             path: info[4],
         };
@@ -311,8 +311,6 @@ DuParser.parseDu_v3 = function parseDu_v3(szUrl) {
     return arrFiles;
 };
 DuParser.parseDu_v4 = function parseDu_v3(szUrl) {
-    var err_20g = [];
-    var err_short = [];
     var list = szUrl
         .split("\n")
         .map(function (z) {
@@ -323,7 +321,7 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl) {
         .filter(function (z) {
         return z;
     })
-        .map(function (info, i) {
+        .map(function (info) {
         var md5 = decryptMd5(info[1].toLowerCase());
         var md5s = info[2] ? decryptMd5(info[2].toLowerCase()) : null;
         var fs = Number.parseInt(info[3]);
@@ -332,13 +330,8 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl) {
                 md5s = md5;
             }
             else {
-                err_short.push(i);
-                return null;
+                md5s = '';
             }
-        }
-        if (fs > 21474836480) { // over 20GiB not supported
-            err_20g.push(i);
-            return null;
         }
         return {
             // 标准码 / 短版标准码(无md5s)
@@ -348,12 +341,6 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl) {
             path: info[4],
         };
     });
-    if (err_short.length > 0) {
-        throw "百度不再支持秒传短链";
-    }
-    else if (err_20g.length > 0) {
-        throw "百度不再支持超过20G单的文件";
-    }
     return list;
 };
 /**
@@ -424,7 +411,7 @@ var SwalConfig = {
     inputView: {
         title: "请输入秒传&保存路径",
         showCancelButton: true,
-        html: "<textarea id=\"mzf-rapid-input\" class=\"swal2-textarea\" placeholder=\"\u00B7 \u652F\u6301\u6279\u91CF\u8F6C\u5B58\u591A\u6761\u79D2\u4F20(\u6362\u884C\u5206\u9694)\n\u00B7 \u652F\u6301PanDL/\u6E38\u4FA0/\u6807\u51C6\u7801/PCS-GO\u683C\u5F0F\n\u00B7 \u652F\u6301\u8F93\u5165\u4E00\u952E\u79D2\u4F20(\u81EA\u52A8\u8F6C\u6362\u4E3A\u666E\u901A\u79D2\u4F20)\n\u00B7 \u53EF\u5728\u8BBE\u7F6E\u9875\u5F00\u542F\u76D1\u542C\u526A\u8D34\u677F,\u81EA\u52A8\u7C98\u8D34\u79D2\u4F20\n\u00B7 \u8F93\u5165set\u6253\u5F00\u8BBE\u7F6E, gen\u8FDB\u5165\u751F\u6210\u9875\n\u00B7 info\u663E\u793A\u7248\u672C\u4FE1\u606F\" style=\"display: flex;padding: 0.4em;\"></textarea>\n    <input id=\"mzf-path-input\" class=\"swal2-input\" placeholder=\"\u4FDD\u5B58\u8DEF\u5F84, \u793A\u4F8B: /GTA5/, \u7559\u7A7A\u4FDD\u5B58\u5728\u5F53\u524D\u76EE\u5F55\" style=\"display: flex;margin-top: 10px;\">",
+        html: "<textarea id=\"mzf-rapid-input\" class=\"swal2-textarea\" placeholder=\"\u00B7 \u652F\u6301\u6279\u91CF\u8F6C\u5B58\u591A\u6761\u79D2\u4F20(\u6362\u884C\u5206\u9694)\n\u00B7 \u652F\u6301PanDL/\u6E38\u4FA0/\u6807\u51C6\u7801/PCS-GO\u683C\u5F0F\n\u00B7 \u652F\u6301\u8F93\u5165\u4E00\u952E\u79D2\u4F20(\u81EA\u52A8\u8F6C\u6362\u4E3A\u666E\u901A\u79D2\u4F20)\n\u00B7 \u53EF\u5728\u8BBE\u7F6E\u9875\u5F00\u542F\u76D1\u542C\u526A\u8D34\u677F,\u81EA\u52A8\u7C98\u8D34\u79D2\u4F20\n\u00B7 \u8F93\u5165set\u6253\u5F00\u8BBE\u7F6E, gen\u8FDB\u5165\u751F\u6210\u9875\n\u00B7 info\u663E\u793A\u7248\u672C\u4FE1\u606F\" style=\"display: flex;padding: 0.4em;\"></textarea>\n    <input id=\"mzf-path-input\" class=\"swal2-input\" placeholder=\"\u4FDD\u5B58\u8DEF\u5F84, \u793A\u4F8B: /GTA5/, \u7559\u7A7A\u4FDD\u5B58\u5728\u5F53\u524D\u76EE\u5F55\" style=\"display: flex;margin-top: 10px;\">\n    <div style=\"display: flex;align-items:flex-end;margin: 10px 2em 0 2em;\">\n    <input id=\"mzf-accesstoken-input\" class=\"swal2-input\" placeholder=\"\u6388\u6743\u7801 (\u7559\u7A7A\u5219\u91CD\u7528\u4E0D\u53D8)\" style=\"flex:1\">\n    <a href=\"https://openapi.baidu.com/oauth/2.0/authorize?response_type=token&client_id=L6g70tBRRIXLsY0Z3HwKqlRE&redirect_uri=oob&scope=netdisk\" class=\"swal2-styled\" id=\"mzf-accesstoken-acquire\" rel=\"noreferrer\" target=\"_blank\">\u83B7\u53D6</a>\n    </div>\n    ",
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         customClass: { htmlContainer: "mzf_html_container" },
@@ -602,11 +589,13 @@ var Swalbase = /** @class */ (function () {
     Swalbase.prototype.inputView = function (inputValue) {
         if (inputValue === void 0) { inputValue = ""; }
         return __awaiter(this, void 0, void 0, function () {
-            var pathValue, preConfirm, willOpen;
+            var accessTokenPropKey, lastAccessToken, pathValue, accessToken, preConfirm, willOpen;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        accessTokenPropKey = getBdstoken() + '::access_token';
+                        lastAccessToken = GM_getValue(accessTokenPropKey);
                         if (!(GM_getValue("listen-clipboard") && !inputValue)) return [3 /*break*/, 2];
                         return [4 /*yield*/, parseClipboard()];
                     case 1:
@@ -615,15 +604,16 @@ var Swalbase = /** @class */ (function () {
                         _a.label = 2;
                     case 2:
                         pathValue = GM_getValue("last_dir") || "";
+                        accessToken = '';
                         preConfirm = function () {
                             // 手动读取Multiple inputs内的数据, 由于未设置input参数, 原生Validator不生效, 自行添加Validator逻辑
                             inputValue = $("#mzf-rapid-input")[0].value;
+                            accessToken = $("#mzf-accesstoken-input")[0].value.trim();
                             pathValue = $("#mzf-path-input")[0]
                                 .value.trim()
                                 .replace(/(\s+)?\/(\s+)?/g, "/"); // 修正不合规的路径(空白开头/结尾)
                             if (!inputValue) {
-                                external_Swal_default().showValidationMessage("秒传不能为空");
-                                return false;
+                                return;
                             }
                             if (commandList.includes(inputValue.trim())) {
                                 // 输入支持的命令, 跳出检查
@@ -644,12 +634,19 @@ var Swalbase = /** @class */ (function () {
                                 external_Swal_default().showValidationMessage('保存路径不能含有字符\\":*?<>|, 示例：/GTA5/');
                                 return false;
                             }
+                            if (!accessToken && !lastAccessToken) {
+                                external_Swal_default().showValidationMessage('请填写授权码');
+                                return false;
+                            }
                         };
                         willOpen = function () {
                             $("#swal2-html-container")
                                 .css("font-size", "1rem")
                                 .css("display", "grid")
                                 .css("margin", "0");
+                            if (lastAccessToken) {
+                                $("#mzf-accesstoken-input")[0].classList.add('mzf-auto-filled');
+                            }
                             $("#mzf-rapid-input")[0].value = inputValue;
                             $("#mzf-path-input")[0].value = pathValue;
                             $("#mzf-rapid-input").on("input", function (event) {
@@ -657,12 +654,28 @@ var Swalbase = /** @class */ (function () {
                                 if (DuParser.parse(result).length)
                                     event.target.value = result;
                             }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
+                            $("#mzf-accesstoken-input").on("input", function (event) {
+                                if (event.target.value.startsWith('https://openapi.baidu.com/oauth/2.0/login_success#')) {
+                                    try {
+                                        var m = new URL(event.target.value).hash.match(/&access_token=([^ =&]+)&/);
+                                        if (m) {
+                                            event.target.value = m[1];
+                                        }
+                                    }
+                                    catch (e) { }
+                                }
+                            }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
                         };
                         external_Swal_default().fire(this.mergeArg(SwalConfig.inputView, {
                             preConfirm: preConfirm,
                             willOpen: willOpen,
                         })).then(function (result) {
                             if (result.isConfirmed) {
+                                if (accessToken) {
+                                    GM_setValue(accessTokenPropKey, accessToken);
+                                }
+                                if (!inputValue)
+                                    return;
                                 if (inputValue === "set")
                                     _this.settingView();
                                 else if (inputValue === "gen")
@@ -671,6 +684,7 @@ var Swalbase = /** @class */ (function () {
                                     _this.updateInfo(function () { });
                                 else {
                                     _this.rapiduploadTask.reset();
+                                    _this.rapiduploadTask.accessToken = accessToken || lastAccessToken;
                                     _this.rapiduploadTask.fileInfoList = DuParser.parse(inputValue);
                                     GM_setValue("last_dir", pathValue);
                                     if (!pathValue) {
@@ -757,13 +771,13 @@ var Swalbase = /** @class */ (function () {
                 var with_path = $("#swal2-checkbox")[0].checked;
                 GM_setValue("with_path", with_path);
                 if (!with_path)
-                    GM_setClipboard(bdlinkPrefix + parseResult.bdcode.replace(/0+#0+#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64());
+                    GM_setClipboard(bdlinkPrefix + parseResult.bdcode.replace(/0+(?:#0+)?#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64());
                 // 去除目录结构, 并转换为一键秒传
                 else
                     GM_setClipboard(bdlinkPrefix + parseResult.bdcode.toBase64()); // 转换为一键秒传
                 external_Swal_default().getDenyButton().innerText = "复制成功,点击右上关闭";
                 var footer = external_Swal_default().getFooter();
-                footer.innerHTML = htmlAboutBdlink;
+                // footer.innerHTML = htmlAboutBdlink;
                 footer.style.display = "flex";
                 return false;
             }, preConfirm: function () {
@@ -1057,9 +1071,6 @@ function ajax(config, callback, failback) {
         } }));
 }
 
-;// CONCATENATED MODULE: external "SparkMD5"
-const external_SparkMD5_namespaceObject = SparkMD5;
-var external_SparkMD5_default = /*#__PURE__*/__webpack_require__.n(external_SparkMD5_namespaceObject);
 ;// CONCATENATED MODULE: ./src/baidu/common/rapiduploadTask.tsx
 /*
  * @Author: mengzonefire
@@ -1074,6 +1085,7 @@ var RapiduploadTask = /** @class */ (function () {
     function RapiduploadTask() {
     }
     RapiduploadTask.prototype.reset = function () {
+        this.accessToken = "";
         this.bdstoken = getBdstoken();
         console.log("bdstoken\u72B6\u6001: " + (this.bdstoken ? "获取成功" : "获取失败")); // debug
         this.fileInfoList = [];
@@ -1116,7 +1128,6 @@ var RapiduploadTask = /** @class */ (function () {
             return;
         }
         rapiduploadCreateFile.call(this, file, function (data) {
-            console.info(JSON.stringify(data));
             data = data.response;
             file.errno = 2 === data.errno ? 114 : data.errno;
             file.errno = 31190 === file.errno ? 404 : file.errno;
@@ -1128,20 +1139,21 @@ var RapiduploadTask = /** @class */ (function () {
 /* harmony default export */ const rapiduploadTask = (RapiduploadTask);
 function createDir(path, onResponsed, onFailed) {
     ajax({
-        url: "" + create_url + (this.bdstoken ? "?bdstoken=" + this.bdstoken : ""),
+        url: "" + createdir_url + (this.bdstoken ? "&bdstoken=" + this.bdstoken : ""),
         method: "POST",
         responseType: "json",
         data: convertData({
             block_list: JSON.stringify([]),
             path: this.savePath + path,
             isdir: 1,
-            rtype: 0,
+            rtype: 3,
         }),
         headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
             "User-Agent": UA,
         }
     }, function (data) {
-        if (0 !== data.response.errno) {
+        if (data.response.errno != null && 0 !== data.response.errno) {
             onFailed(data.response.errno);
         }
         else {
@@ -1192,16 +1204,16 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
     var _this = this;
     if (retryDelay === void 0) { retryDelay = 0; }
     var contentMd5 = transformCase(file.md5, attempts[attemptIndex]);
-    var sliceMd5 = file.md5s.toLowerCase();
+    //const sliceMd5 = file.md5s.toLowerCase();
     ajax({
-        url: "" + rapidupload_url + (this.bdstoken ? "?bdstoken=" + this.bdstoken : ""),
+        url: create_url + "&access_token=" + encodeURIComponent(this.accessToken) + (this.bdstoken ? "&bdstoken=" + this.bdstoken : ""),
         method: "POST",
         responseType: "json",
         data: convertData({
+            block_list: JSON.stringify([contentMd5]),
             path: this.savePath + file.path.replace(illegalPathPattern, "_"),
-            "content-length": file.size,
-            "content-md5": contentMd5,
-            "slice-md5": sliceMd5,
+            size: file.size,
+            isdir: 0,
             rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
         }),
         headers: {
@@ -1214,7 +1226,7 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
             file.path = suffixChange(file.path);
             tryRapiduploadCreateFile.call(_this, file, onResponsed, onFailed, attempts, attemptIndex);
         }
-        else if (404 === data.response.errno && attempts.length > attemptIndex + 1) {
+        else if (2 === data.response.errno && attempts.length > attemptIndex + 1) {
             //console.log(`转存接口错误, 重试${retry + 1}次: ${file.path}`); // debug
             setTimeout(function () {
                 tryRapiduploadCreateFile.call(_this, file, onResponsed, onFailed, attempts, attemptIndex + 1, retryDelay + retryDelayIncrement);
@@ -1239,7 +1251,7 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
 
 
 // import { createFileV2 } from "./rapiduploadTask";
-
+// import SparkMD5 from "spark-md5";
 
 var listMinDelayMsec = 1000;
 var retryDelaySec = 30;
@@ -1310,7 +1322,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
                             size: 0,
                             fs_id: '',
                             md5: '00000000000000000000000000000000',
-                            md5s: '00000000000000000000000000000000',
+                            md5s: '',
                         });
                     }
                     setTimeout(function () {
@@ -1388,7 +1400,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
                             size: 0,
                             fs_id: '',
                             md5: '00000000000000000000000000000000',
-                            md5s: '00000000000000000000000000000000',
+                            md5s: '',
                         });
                     }
                     setTimeout(function () {
@@ -1614,7 +1626,8 @@ var GeneratebdlinkTask = /** @class */ (function () {
     GeneratebdlinkTask.prototype.downloadFileData = function (i, dlink) {
         var _this = this;
         var file = this.fileInfoList[i];
-        var dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
+        //let dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
+        var dlSize = 1;
         ajax({
             url: dlink,
             method: "GET",
@@ -1667,16 +1680,18 @@ var GeneratebdlinkTask = /** @class */ (function () {
             this.generateBdlink(i + 1);
             return;
         }
+        file.md5s = ''; // use short link only, skip md5s
+        /*
         // 获取md5s, "极速生成" 跳过此步
-        if (file.size < 262144)
-            file.md5s = file.md5; // 此时md5s=md5
+        if (file.size < 262144) file.md5s = file.md5; // 此时md5s=md5
         else {
-            // 计算md5s
-            var spark = new (external_SparkMD5_default()).ArrayBuffer();
-            spark.append(data.response);
-            var sliceMd5 = spark.end();
-            file.md5s = sliceMd5;
+          // 计算md5s
+          let spark = new SparkMD5.ArrayBuffer();
+          spark.append(data.response);
+          let sliceMd5 = spark.end();
+          file.md5s = sliceMd5;
         }
+        */
         var interval = this.fileInfoList.length > 1 ? 2000 : 1000;
         setTimeout(function () {
             _this.generateBdlink(i + 1);
@@ -1791,9 +1806,10 @@ var GeneratebdlinkTask = /** @class */ (function () {
 var host = location.host;
 var listLimit = 10000;
 var syncPathPrefix = "/_pcs_.workspace";
-var create_url = "https://" + host + "/api/create";
+var create_url = "https://" + host + "/rest/2.0/xpan/file?method=create";
+var createdir_url = "https://" + host + "/api/create?a=commit&clienttype=0&app_id=250528&web=1";
 var precreate_url = "https://" + host + "/api/precreate";
-var rapidupload_url = "https://" + host + "/api/rapidupload";
+// export const rapidupload_url = `https://${host}/api/rapidupload`;
 var list_url = "https://" + host + "/rest/2.0/xpan/multimedia?method=listall&order=name&limit=" + listLimit + "&path=";
 var meta_url = "https://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&method=meta&path=";
 var meta_url2 = "https://" + host + "/api/filemetas?dlink=1&fsids=";
@@ -1847,7 +1863,7 @@ function baiduErrno(errno) {
         case 996:
             return "md5获取失败";
         case 2:
-            return "转存失败, 接口可能限制了IP, 请改IP重试, VPN海外IP更佳";
+            return "转存失败, 参数错误";
         case -10:
             return "网盘容量已满";
         case 500:

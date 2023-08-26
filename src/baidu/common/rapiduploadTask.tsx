@@ -8,8 +8,8 @@ import ajax from "@/common/ajax";
 import { UA } from "@/common/const";
 import { convertData, suffixChange } from "@/common/utils";
 import {
-  rapidupload_url,
   create_url,
+  createdir_url,
   getBdstoken,
   illegalPathPattern,
 } from "./const";
@@ -17,11 +17,13 @@ export default class RapiduploadTask {
   savePath: string;
   isDefaultPath: boolean;
   fileInfoList: Array<FileInfo>;
+  accessToken: string;
   bdstoken: string;
   onFinish: (fileInfoList: Array<FileInfo>) => void;
   onProcess: (i: number, fileInfoList: Array<FileInfo>) => void;
 
   reset(): void {
+    this.accessToken = "";
     this.bdstoken = getBdstoken();
     console.log(`bdstoken状态: ${this.bdstoken ? "获取成功" : "获取失败"}`); // debug
     this.fileInfoList = [];
@@ -73,7 +75,6 @@ export default class RapiduploadTask {
       this,
       file,
       (data: any) => {
-        console.info(JSON.stringify(data))
         data = data.response;
         file.errno = 2 === data.errno ? 114 : data.errno;
         file.errno = 31190 === file.errno ? 404 : file.errno;
@@ -91,21 +92,22 @@ export function createDir(
 
   ajax(
     {
-      url: `${create_url}${this.bdstoken ? "?bdstoken=" + this.bdstoken : ""}`, // bdstoken参数不能放在data里, 否则无效
+      url: `${createdir_url}${this.bdstoken ? "&bdstoken=" + this.bdstoken : ""}`,
       method: "POST",
       responseType: "json",
       data: convertData({
         block_list: JSON.stringify([]),
         path: this.savePath + path,
         isdir: 1,
-        rtype: 0,
+        rtype: 3,
       }),
       headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
         "User-Agent": UA,
       }
     },
     (data) => {
-      if (0 !== data.response.errno) {
+      if (data.response.errno != null && 0 !== data.response.errno) {
         onFailed(data.response.errno);
       } else {
         onResponsed(data);
@@ -172,18 +174,19 @@ function tryRapiduploadCreateFile(
   retryDelay: number = 0,
 ): void {
   const contentMd5 = transformCase(file.md5, attempts[attemptIndex]);
-  const sliceMd5 = file.md5s.toLowerCase();
+  //const sliceMd5 = file.md5s.toLowerCase();
 
   ajax(
     {
-      url: `${rapidupload_url}${this.bdstoken ? "?bdstoken=" + this.bdstoken : ""}`, // bdstoken参数不能放在data里, 否则无效
+      url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}${this.bdstoken ? "&bdstoken=" + this.bdstoken : ""}`, // bdstoken参数不能放在data里, 否则无效
       method: "POST",
       responseType: "json",
+      
       data: convertData({
+        block_list: JSON.stringify([contentMd5]),
         path: this.savePath + file.path.replace(illegalPathPattern, "_"),
-        "content-length": file.size,
-        "content-md5": contentMd5,
-        "slice-md5": sliceMd5,
+        size: file.size,
+        isdir: 0,
         rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
       }),
       headers: {
@@ -196,7 +199,7 @@ function tryRapiduploadCreateFile(
         file.errno = 31039;
         file.path = suffixChange(file.path);
         tryRapiduploadCreateFile.call(this, file, onResponsed, onFailed, attempts, attemptIndex);
-      } else if (404 === data.response.errno && attempts.length > attemptIndex + 1) {
+      } else if (2 === data.response.errno && attempts.length > attemptIndex + 1) {
         //console.log(`转存接口错误, 重试${retry + 1}次: ${file.path}`); // debug
         setTimeout(() => {
           tryRapiduploadCreateFile.call(this, file, onResponsed, onFailed, attempts, attemptIndex + 1, retryDelay + retryDelayIncrement);

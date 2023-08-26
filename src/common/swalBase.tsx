@@ -10,7 +10,7 @@ import {
   bdlinkPrefix,
   commandList,
   doc2,
-  htmlAboutBdlink,
+  // htmlAboutBdlink,
   linkStyle,
   locUrl,
 } from "./const";
@@ -20,6 +20,7 @@ import {
   getSelectedFileList,
   illegalPathPattern,
   syncPathPrefix,
+  getBdstoken,
 } from "@/baidu/common/const";
 import GeneratebdlinkTask from "@/baidu/common/generatebdlinkTask";
 import RapiduploadTask from "@/baidu/common/rapiduploadTask";
@@ -57,19 +58,22 @@ export default class Swalbase {
 
   // 点击 "秒传链接" 后显示的弹窗
   async inputView(inputValue: string = "") {
+    const accessTokenPropKey = getBdstoken() + '::access_token';
+    const lastAccessToken : string = GM_getValue(accessTokenPropKey);
     if (GM_getValue("listen-clipboard") && !inputValue)
       // 标志位true 且 inputValue为空(非一键秒传进入时) 从剪贴板读取有效的秒传链接
       inputValue = await parseClipboard();
     let pathValue: string = GM_getValue("last_dir") || ""; // 从GM存储读取上次输入的转存路径
+    let accessToken = '';
     let preConfirm = () => {
       // 手动读取Multiple inputs内的数据, 由于未设置input参数, 原生Validator不生效, 自行添加Validator逻辑
       inputValue = $("#mzf-rapid-input")[0].value;
+      accessToken = $("#mzf-accesstoken-input")[0].value.trim();
       pathValue = $("#mzf-path-input")[0]
         .value.trim()
         .replace(/(\s+)?\/(\s+)?/g, "/"); // 修正不合规的路径(空白开头/结尾)
       if (!inputValue) {
-        Swal.showValidationMessage("秒传不能为空");
-        return false;
+        return;
       }
       if (commandList.includes(inputValue.trim())) {
         // 输入支持的命令, 跳出检查
@@ -95,17 +99,36 @@ export default class Swalbase {
         );
         return false;
       }
+      if (!accessToken && !lastAccessToken) {
+        Swal.showValidationMessage(
+          '请填写授权码'
+        );
+        return false;
+      }
     };
     let willOpen = () => {
       $("#swal2-html-container")
         .css("font-size", "1rem")
         .css("display", "grid")
         .css("margin", "0");
+      if (lastAccessToken) {
+          $("#mzf-accesstoken-input")[0].classList.add('mzf-auto-filled');
+        }
       $("#mzf-rapid-input")[0].value = inputValue;
       $("#mzf-path-input")[0].value = pathValue;
       $("#mzf-rapid-input").on("input", function (event) {
         let result = parseQueryLink(event.target.value);
         if (DuParser.parse(result).length) event.target.value = result;
+      }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
+      $("#mzf-accesstoken-input").on("input", function (event) {
+        if (event.target.value.startsWith('https://openapi.baidu.com/oauth/2.0/login_success#')) {
+          try {
+            const m = new URL(event.target.value).hash.match(/&access_token=([^ =&]+)&/);
+            if (m) {
+              event.target.value = m[1];
+            }
+          } catch (e) {}
+        }
       }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
     };
     Swal.fire(
@@ -115,11 +138,18 @@ export default class Swalbase {
       })
     ).then((result: any) => {
       if (result.isConfirmed) {
+        if (accessToken) {
+          GM_setValue(accessTokenPropKey, accessToken);
+        }
+
+        if (!inputValue)
+          return;
         if (inputValue === "set") this.settingView();
         else if (inputValue === "gen") this.genView();
         else if (inputValue === "info") this.updateInfo(() => {});
         else {
           this.rapiduploadTask.reset();
+          this.rapiduploadTask.accessToken = accessToken||lastAccessToken;
           this.rapiduploadTask.fileInfoList = DuParser.parse(inputValue);
           GM_setValue("last_dir", pathValue);
           if (!pathValue) {
@@ -209,13 +239,13 @@ export default class Swalbase {
         GM_setValue("with_path", with_path);
         if (!with_path)
           GM_setClipboard(
-            bdlinkPrefix + parseResult.bdcode.replace(/0+#0+#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64()
+            bdlinkPrefix + parseResult.bdcode.replace(/0+(?:#0+)?#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64()
           );
         // 去除目录结构, 并转换为一键秒传
         else GM_setClipboard(bdlinkPrefix + parseResult.bdcode.toBase64()); // 转换为一键秒传
         Swal.getDenyButton().innerText = "复制成功,点击右上关闭";
         let footer = Swal.getFooter();
-        footer.innerHTML = htmlAboutBdlink;
+        // footer.innerHTML = htmlAboutBdlink;
         footer.style.display = "flex";
         return false;
       },

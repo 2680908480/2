@@ -14,7 +14,12 @@ export const SwalConfig = {
     title: "请输入秒传&保存路径",
     showCancelButton: true,
     html: `<textarea id="mzf-rapid-input" class="swal2-textarea" placeholder="· 支持批量转存多条秒传(换行分隔)\n· 支持PanDL/游侠/标准码/PCS-GO格式\n· 支持输入一键秒传(自动转换为普通秒传)\n· 可在设置页开启监听剪贴板,自动粘贴秒传\n· 输入set打开设置, gen进入生成页\n· info显示版本信息" style="display: flex;padding: 0.4em;"></textarea>
-    <input id="mzf-path-input" class="swal2-input" placeholder="保存路径, 示例: /GTA5/, 留空保存在当前目录" style="display: flex;margin-top: 10px;">`,
+    <input id="mzf-path-input" class="swal2-input" placeholder="保存路径, 示例: /GTA5/, 留空保存在当前目录" style="display: flex;margin-top: 10px;">
+    <div style="display: flex;align-items:flex-end;margin: 10px 2em 0 2em;">
+    <input id="mzf-accesstoken-input" class="swal2-input" placeholder="授权码 (留空则重用不变)" style="flex:1">
+    <a href="https://openapi.baidu.com/oauth/2.0/authorize?response_type=token&client_id=L6g70tBRRIXLsY0Z3HwKqlRE&redirect_uri=oob&scope=netdisk" class="swal2-styled" id="mzf-accesstoken-acquire" rel="noreferrer" target="_blank">获取</a>
+    </div>
+    `,
     confirmButtonText: "确定",
     cancelButtonText: "取消",
     customClass: { htmlContainer: "mzf_html_container" },

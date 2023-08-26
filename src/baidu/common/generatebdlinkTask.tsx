@@ -26,7 +26,7 @@ import {
   listLimit,
 } from "./const";
 // import { createFileV2 } from "./rapiduploadTask";
-import SparkMD5 from "spark-md5";
+// import SparkMD5 from "spark-md5";
 import { rapiduploadCreateFile } from "./rapiduploadTask";
 
 const listMinDelayMsec = 1000;
@@ -113,7 +113,7 @@ export default class GeneratebdlinkTask {
                 size: 0,
                 fs_id: '',
                 md5: '00000000000000000000000000000000',
-                md5s: '00000000000000000000000000000000',
+                md5s: '',
               });
             }
             setTimeout(() => {
@@ -190,7 +190,7 @@ export default class GeneratebdlinkTask {
                 size: 0,
                 fs_id: '',
                 md5: '00000000000000000000000000000000',
-                md5s: '00000000000000000000000000000000',
+                md5s: '',
               });
             }
             setTimeout(() => {
@@ -431,7 +431,8 @@ export default class GeneratebdlinkTask {
    */
   downloadFileData(i: number, dlink: string): void {
     let file = this.fileInfoList[i];
-    let dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
+    //let dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
+    let dlSize = 1;
     ajax(
       {
         url: dlink,
@@ -487,6 +488,10 @@ export default class GeneratebdlinkTask {
       this.generateBdlink(i + 1);
       return;
     }
+
+    file.md5s = ''; // use short link only, skip md5s
+
+    /*
     // 获取md5s, "极速生成" 跳过此步
     if (file.size < 262144) file.md5s = file.md5; // 此时md5s=md5
     else {
@@ -496,6 +501,7 @@ export default class GeneratebdlinkTask {
       let sliceMd5 = spark.end();
       file.md5s = sliceMd5;
     }
+    */
     let interval = this.fileInfoList.length > 1 ? 2000 : 1000;
     setTimeout(() => {
       this.generateBdlink(i + 1);

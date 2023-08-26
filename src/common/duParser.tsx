@@ -47,7 +47,7 @@ DuParser.parseDu_v1 = function parseDu_v1(szUrl: string) {
       return z
         .trim()
         .fromBase64()
-        .match(/([\s\S]+)\|([\d]{1,20})\|([\da-f]{32})\|([\da-f]{32})/i);
+        .match(/([\s\S]+)\|([\d]{1,20})\|([\da-f]{32})(?:\|([\da-f]{32}))?/i);
     })
     .filter(function (z) {
       return z;
@@ -55,7 +55,7 @@ DuParser.parseDu_v1 = function parseDu_v1(szUrl: string) {
     .map(function (info: Array<any>) {
       return {
         md5: info[3],
-        md5s: info[4],
+        md5s: info[4]||'',
         size: Number.parseInt(info[2]),
         path: info[1],
       };
@@ -70,7 +70,7 @@ DuParser.parseDu_v2 = function parseDu_v2(szUrl: string) {
       return z
         .trim()
         .match(
-          /-length=([\d]{1,20}) -md5=([\da-f]{32}) -slicemd5=([\da-f]{32})[\s\S]+"([\s\S]+)"/i
+          /-length=([\d]{1,20}) -md5=([\da-f]{32})(?: -slicemd5=([\da-f]{32}))?[\s\S]+"([\s\S]+)"/i
         );
     })
     .filter(function (z) {
@@ -79,7 +79,7 @@ DuParser.parseDu_v2 = function parseDu_v2(szUrl: string) {
     .map(function (info) {
       return {
         md5: info[2],
-        md5s: info[3],
+        md5s: info[3]||'',
         size: Number.parseInt(info[1]),
         path: info[4],
       };
@@ -126,8 +126,6 @@ DuParser.parseDu_v3 = function parseDu_v3(szUrl: string) {
 };
 
 DuParser.parseDu_v4 = function parseDu_v3(szUrl: string) {
-  let err_20g = [];
-  let err_short = [];
   const list = szUrl
     .split("\n")
     .map(function (z) {
@@ -140,7 +138,7 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl: string) {
     .filter(function (z) {
       return z;
     })
-    .map(function (info, i) {
+    .map(function (info) {
       const md5 = decryptMd5(info[1].toLowerCase());
       let md5s = info[2] ? decryptMd5(info[2].toLowerCase()) : null;
       const fs = Number.parseInt(info[3]);
@@ -148,13 +146,8 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl: string) {
         if (fs <= 262144) {
           md5s = md5;
         } else {
-          err_short.push(i);
-          return null;
+          md5s = '';
         }
-      }
-      if (fs > 21474836480) { // over 20GiB not supported
-        err_20g.push(i);
-        return null;
       }
       return {
         // 标准码 / 短版标准码(无md5s)
@@ -164,11 +157,6 @@ DuParser.parseDu_v4 = function parseDu_v3(szUrl: string) {
         path: info[4],
       };
     });
-    if (err_short.length > 0) {
-      throw "百度不再支持秒传短链";
-    } else if (err_20g.length > 0) {
-      throw "百度不再支持超过20G单的文件";
-    }
     return list;
 };
 

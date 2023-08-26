@@ -55,3 +55,15 @@
 #mzf-rapid-input.swal2-textarea {
   height: 10em;
 }
+#mzf-accesstoken-input {
+  background: rgb(255, 252, 222);
+  font-size: 0.8em;
+  margin-left: 0;
+  margin-right: 0;
+}
+#mzf-accesstoken-input.mzf-auto-filled {
+  background: #EEE;
+}
+#mzf-accesstoken-acquire {
+  font-size: 0.8em;
+}
