@@ -27,7 +27,7 @@ import {
 } from "./const";
 // import { createFileV2 } from "./rapiduploadTask";
 // import SparkMD5 from "spark-md5";
-import { rapiduploadCreateFile } from "./rapiduploadTask";
+// import { rapiduploadCreateFile } from "./rapiduploadTask";
 
 const listMinDelayMsec = 1000;
 const retryDelaySec = 30;
@@ -330,7 +330,7 @@ export default class GeneratebdlinkTask {
       file = this.fileInfoList[i],
       onFailed = (errno: number) => {
         file.errno = errno;
-        this.checkMd5(i + 1);
+        this.getShareDlink(i + 1);
         // md5为空只在分享单个文件时出现, 故无需考虑获取多文件md5(跳转generateBdlink), 直接跳转checkMd5即可
       };
     function getTplconfig(file: FileInfo): void {
@@ -525,12 +525,14 @@ export default class GeneratebdlinkTask {
     }
     this.onProcess(i, this.fileInfoList);
     this.onProgress(false, "极速生成中...");
+    this.isSharePage ? this.getShareDlink(i) : this.getDlink(i);
     // this.isSharePage ? this.getShareDlink(i) : this.getDlink(i);
     // 23.4.27: 错误md5在文件上传者账号使用此接口正常转存, 在其他账号则报错#404(#31190), 导致生成秒传完全无法验证, 故弃用meta内的md5
     // 23.5.4: 发现错误md5只要改成大写, 在上传者账号就能正常返回#31190, 而正确md5则大小写都能正常转存, 故重新启用此验证过程
     // 主要是因为频繁请求直链接口获取正确md5会导致#9019错误(即账号被限制), 对大批量生成秒传有很大影响, 极速生成功能使用此验证则可以节约请求以避免此问题
     // 为避免百度后面又改接口导致生成错误秒传问题, 这个接口特性我会写个定时脚本每天测试一次, 出了问题就能即使更新
     // 目前发现是通过秒传拿到的文件再生成秒传不会有这问题, 上传的文件或通过分享转存的别人上传的文件则会有
+    /*
     rapiduploadCreateFile.call(
       this,
       file,
@@ -559,6 +561,7 @@ export default class GeneratebdlinkTask {
       0,
       true
     );
+    */
   }
 
   /**
