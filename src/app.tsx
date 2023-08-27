@@ -9,9 +9,27 @@ function app(): void {
   injectStyle();
 }
 
+function acquireAccessToken() : void {
+  if (document.location.pathname === "/oauth/2.0/login_success") {
+    const request : string = GM_getValue("accessTokenRequest");
+    if (request.startsWith("request:")) {
+      const requestId = request.substring(8);
+      const match = document.location.hash.match(/&access_token=([^ =&]+)&/);
+      if (match) {
+        GM_setValue("accessTokenRequest", `accessToken:${requestId}:${match[1]}`);
+        console.info("access-token = " + match[1]);
+      }
+    }
+  }
+}
+
 // 广告拦截插件会导致脚本报错跳出, 网页卡死, 故加入异常处理
 try {
-  app();
+  if (document.location.host === "openapi.baidu.com") {
+    acquireAccessToken();
+  } else {
+    app();
+  }
 } catch (error) {
   console.log(error);
 }

@@ -105,6 +105,10 @@ export default class Swalbase {
       }
     };
     let willOpen = () => {
+      const requestId = '' + Date.now();
+      const responsePrefix = `accessToken:${requestId}:`;
+      GM_setValue("accessTokenRequest", `request:${requestId}`);
+      $("#mzf-accesstoken-input").data('request-id', requestId);
       $("#swal2-html-container")
         .css("font-size", "1rem")
         .css("display", "grid")
@@ -127,7 +131,23 @@ export default class Swalbase {
             }
           } catch (e) {}
         }
-      }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
+      });
+
+      function pollAccessToken() {
+        const val : string = GM_getValue("accessTokenRequest");
+        if (val && val.startsWith(responsePrefix)) {
+          accessToken = val.substring(responsePrefix.length);
+          $("#mzf-accesstoken-input")[0].value = accessToken;
+          GM_setValue("accessTokenRequest", "");
+          GM_setValue(accessTokenPropKey, accessToken);
+          return;
+        }
+        const elem = $("#mzf-accesstoken-input");
+        if (elem.length === 1 && elem.data('request-id') === requestId) {
+          setTimeout(pollAccessToken, 100);
+        }
+      }
+      pollAccessToken();
     };
     Swal.fire(
       this.mergeArg(SwalConfig.inputView, {

@@ -16,6 +16,7 @@
 // @match          *://wangpan.baidu.com/disk/synchronization*
 // @match          *://wangpan.baidu.com/s/*
 // @match          *://pan.baidu.com/wap/home*
+// @match          *://openapi.baidu.com/oauth/2.0/login_success
 // @license        GPLv3
 // @icon           data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABBUlEQVR4AZTTJRBUURTH4TtDwXuPdPrgbhHXiksf3CPucRNScHd3d3d3uO9bKeu7b79+fun8Q17CNHyMMUqaiPE4fEyYVjjGNKnNwQ4lpgV8lManEfwfosLHEGPU1N3ZnAv4qlT+NiQ56uPWSjKBrztUSnIaB66sY1vgxgxoMXB5NbsCB9rxcB5fN2M5/16nCFxeS6YTezpzsB1Pu/C2O7/78/99eYBYHXh+gqdHObGIK4GHgevjVIt1AgAnhvE4cGe8euoHbizgYuD2RGgx8O0RpwIPRmsmJDGqcrANd3pLo/qVr03hUlcpfSwf0/vD3JwkPdPK5/zhkOz+/f1FIDv/RcnOAEjywH/DhgADAAAAAElFTkSuQmCC
 // @namespace      com.github.tousakasp
@@ -639,6 +640,10 @@ var Swalbase = /** @class */ (function () {
                             }
                         };
                         willOpen = function () {
+                            var requestId = '' + Date.now();
+                            var responsePrefix = "accessToken:" + requestId + ":";
+                            GM_setValue("accessTokenRequest", "request:" + requestId);
+                            $("#mzf-accesstoken-input").data('request-id', requestId);
                             $("#swal2-html-container")
                                 .css("font-size", "1rem")
                                 .css("display", "grid")
@@ -663,7 +668,22 @@ var Swalbase = /** @class */ (function () {
                                     }
                                     catch (e) { }
                                 }
-                            }); // 绑定输入框事件, 输入一键秒传后尝试转换为普通秒传
+                            });
+                            function pollAccessToken() {
+                                var val = GM_getValue("accessTokenRequest");
+                                if (val && val.startsWith(responsePrefix)) {
+                                    accessToken = val.substring(responsePrefix.length);
+                                    $("#mzf-accesstoken-input")[0].value = accessToken;
+                                    GM_setValue("accessTokenRequest", "");
+                                    GM_setValue(accessTokenPropKey, accessToken);
+                                    return;
+                                }
+                                var elem = $("#mzf-accesstoken-input");
+                                if (elem.length === 1 && elem.data('request-id') === requestId) {
+                                    setTimeout(pollAccessToken, 100);
+                                }
+                            }
+                            pollAccessToken();
                         };
                         external_Swal_default().fire(this.mergeArg(SwalConfig.inputView, {
                             preConfirm: preConfirm,
@@ -2626,9 +2646,27 @@ function app_app() {
     external_Base64_namespaceObject.Base64.extendString();
     injectStyle();
 }
+function acquireAccessToken() {
+    if (document.location.pathname === "/oauth/2.0/login_success") {
+        var request = GM_getValue("accessTokenRequest");
+        if (request.startsWith("request:")) {
+            var requestId = request.substring(8);
+            var match = document.location.hash.match(/&access_token=([^ =&]+)&/);
+            if (match) {
+                GM_setValue("accessTokenRequest", "accessToken:" + requestId + ":" + match[1]);
+                console.info("access-token = " + match[1]);
+            }
+        }
+    }
+}
 // 广告拦截插件会导致脚本报错跳出, 网页卡死, 故加入异常处理
 try {
-    app_app();
+    if (document.location.host === "openapi.baidu.com") {
+        acquireAccessToken();
+    }
+    else {
+        app_app();
+    }
 }
 catch (error) {
     console.log(error);

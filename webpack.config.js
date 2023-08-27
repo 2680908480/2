@@ -108,6 +108,7 @@ module.exports = {
           "*://wangpan.baidu.com/disk/synchronization*",
           "*://wangpan.baidu.com/s/*",
           "*://pan.baidu.com/wap/home*",
+          "*://openapi.baidu.com/oauth/2.0/login_success",
         ],
         grant: [
           "GM_setValue",
