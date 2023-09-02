@@ -60,6 +60,7 @@ export function baiduErrno(errno: number) {
     case 400:
       return "请求错误";
     case 9019:
+      return "请重新获取授权码";
     case 403:
       return "接口限制访问";
     case 404:
