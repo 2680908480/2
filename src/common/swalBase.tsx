@@ -215,6 +215,31 @@ export default class Swalbase {
     Swal.fire(this.mergeArg(SwalConfig.processView, swalArg));
   }
 
+  getBdlinks(bdcode: string, with_path: boolean, absolute_path_mode: boolean) {
+    let bdlinks = bdcode.split('\n');
+    if (!with_path) {
+      // 去除秒传链接中的目录结构(仅保留文件名)
+      bdlinks = bdlinks.map(lnk => lnk.replace(/^([0-9A-Za-z]{32}#(?:[0-9A-Za-z]{32}#)?\d+#).*\/([^/]*)$/, "$1$2"));
+      bdlinks = bdlinks.filter(lnk => lnk.match(/^0{32}#(?:0{32}#)?0#/) == null);
+    } else if (!absolute_path_mode) {
+        // 去除前置的路径以及路径开头的'/', 将绝对路径转换为相对路径 (默认执行)
+        let localPathPrefix = "";
+        let nowPath = location.href.match(/path=(.+?)(?:&|$)/);
+        if (nowPath) localPathPrefix = decodeURIComponent(nowPath[1]);
+        bdlinks = bdlinks.map(lnk => {
+          let parts = lnk.split('#')
+          if (parts[parts.length - 1].startsWith(localPathPrefix + '/')) {
+            parts[parts.length - 1] = parts[parts.length - 1].substring(localPathPrefix.length);
+            parts[parts.length - 1] = parts[parts.length - 1].replace(/^\/+/, "");
+          }
+          return parts.join('#');
+        });
+    } else {
+      // 保留完整的文件路径(绝对路径)
+    }
+    return bdlinks;
+  }
+  
   // 转存/生成秒传完成的弹窗
   finishView(isGen: boolean) {
     let action = isGen ? "生成" : "转存";
@@ -254,12 +279,10 @@ export default class Swalbase {
       preDeny: () => {
         let with_path = $("#swal2-checkbox")[0].checked;
         GM_setValue("with_path", with_path);
-        if (!with_path)
-          GM_setClipboard(
-            bdlinkPrefix + parseResult.bdcode.replace(/0+(?:#0+)?#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64()
-          );
-        // 去除目录结构, 并转换为一键秒传
-        else GM_setClipboard(bdlinkPrefix + parseResult.bdcode.toBase64()); // 转换为一键秒传
+        GM_setClipboard(
+          // 转换为一键秒传
+          bdlinkPrefix + this.getBdlinks(parseResult.bdcode, with_path, GM_getValue("pathType") == "absolute").join('\n').toBase64()
+        );
         Swal.getDenyButton().innerText = "复制成功,点击右上关闭";
         let footer = Swal.getFooter();
         // footer.innerHTML = htmlAboutBdlink;
@@ -271,31 +294,10 @@ export default class Swalbase {
           // 生成模式, "复制秒传代码"按钮
           let with_path = $("#swal2-checkbox")[0].checked;
           GM_setValue("with_path", with_path);
-          if (!with_path)
-            GM_setClipboard(
-              parseResult.bdcode.replace(/0+#0+#0#.*\/(?:\n|$)/, '').replace(/(#\/.+\/)|(#\/)/g, "#")
-            );
-          // 去除秒传链接中的目录结构(仅保留文件名)
-          else {
-            let pathType =
-              GM_getValue("pathType") === undefined
-                ? "relative"
-                : GM_getValue("pathType");
-            if ("absolute" === pathType) GM_setClipboard(parseResult.bdcode);
-            // 保留完整的文件路径(绝对路径)
-            else if ("relative" === pathType) {
-              // 去除前置的路径以及路径开头的'/', 将绝对路径转换为相对路径 (默认执行)
-              let localPathPrefix = "";
-              let nowPath = location.href.match(/path=(.+?)(?:&|$)/);
-              if (nowPath) localPathPrefix = decodeURIComponent(nowPath[1]);
-              GM_setClipboard(
-                parseResult.bdcode.replace(
-                  new RegExp(`(#${localPathPrefix}/)|(#/)`, "g"),
-                  "#"
-                )
-              );
-            }
-          }
+          GM_setClipboard(
+            this.getBdlinks(parseResult.bdcode, with_path, GM_getValue("pathType") == "absolute").join('\n')
+          );
+
           Swal.getConfirmButton().innerText = "复制成功,点击右上关闭";
           return false;
         } else {

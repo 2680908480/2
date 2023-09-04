@@ -756,6 +756,33 @@ var Swalbase = /** @class */ (function () {
         };
         external_Swal_default().fire(this.mergeArg(SwalConfig.processView, swalArg));
     };
+    Swalbase.prototype.getBdlinks = function (bdcode, with_path, absolute_path_mode) {
+        var bdlinks = bdcode.split('\n');
+        if (!with_path) {
+            // 去除秒传链接中的目录结构(仅保留文件名)
+            bdlinks = bdlinks.map(function (lnk) { return lnk.replace(/^([0-9A-Za-z]{32}#(?:[0-9A-Za-z]{32}#)?\d+#).*\/([^/]*)$/, "$1$2"); });
+            bdlinks = bdlinks.filter(function (lnk) { return lnk.match(/^0{32}#(?:0{32}#)?0#/) == null; });
+        }
+        else if (!absolute_path_mode) {
+            // 去除前置的路径以及路径开头的'/', 将绝对路径转换为相对路径 (默认执行)
+            var localPathPrefix_1 = "";
+            var nowPath = location.href.match(/path=(.+?)(?:&|$)/);
+            if (nowPath)
+                localPathPrefix_1 = decodeURIComponent(nowPath[1]);
+            bdlinks = bdlinks.map(function (lnk) {
+                var parts = lnk.split('#');
+                if (parts[parts.length - 1].startsWith(localPathPrefix_1 + '/')) {
+                    parts[parts.length - 1] = parts[parts.length - 1].substring(localPathPrefix_1.length);
+                    parts[parts.length - 1] = parts[parts.length - 1].replace(/^\/+/, "");
+                }
+                return parts.join('#');
+            });
+        }
+        else {
+            // 保留完整的文件路径(绝对路径)
+        }
+        return bdlinks;
+    };
     // 转存/生成秒传完成的弹窗
     Swalbase.prototype.finishView = function (isGen) {
         var _this = this;
@@ -788,11 +815,9 @@ var Swalbase = /** @class */ (function () {
             preDeny: function () {
                 var with_path = $("#swal2-checkbox")[0].checked;
                 GM_setValue("with_path", with_path);
-                if (!with_path)
-                    GM_setClipboard(bdlinkPrefix + parseResult.bdcode.replace(/0+(?:#0+)?#0#.*\/(?:\n|$)/, '').replace(/\/.+\//g, "").toBase64());
-                // 去除目录结构, 并转换为一键秒传
-                else
-                    GM_setClipboard(bdlinkPrefix + parseResult.bdcode.toBase64()); // 转换为一键秒传
+                GM_setClipboard(
+                // 转换为一键秒传
+                bdlinkPrefix + _this.getBdlinks(parseResult.bdcode, with_path, GM_getValue("pathType") == "absolute").join('\n').toBase64());
                 external_Swal_default().getDenyButton().innerText = "复制成功,点击右上关闭";
                 var footer = external_Swal_default().getFooter();
                 // footer.innerHTML = htmlAboutBdlink;
@@ -803,25 +828,7 @@ var Swalbase = /** @class */ (function () {
                     // 生成模式, "复制秒传代码"按钮
                     var with_path = $("#swal2-checkbox")[0].checked;
                     GM_setValue("with_path", with_path);
-                    if (!with_path)
-                        GM_setClipboard(parseResult.bdcode.replace(/0+#0+#0#.*\/(?:\n|$)/, '').replace(/(#\/.+\/)|(#\/)/g, "#"));
-                    // 去除秒传链接中的目录结构(仅保留文件名)
-                    else {
-                        var pathType = GM_getValue("pathType") === undefined
-                            ? "relative"
-                            : GM_getValue("pathType");
-                        if ("absolute" === pathType)
-                            GM_setClipboard(parseResult.bdcode);
-                        // 保留完整的文件路径(绝对路径)
-                        else if ("relative" === pathType) {
-                            // 去除前置的路径以及路径开头的'/', 将绝对路径转换为相对路径 (默认执行)
-                            var localPathPrefix = "";
-                            var nowPath = location.href.match(/path=(.+?)(?:&|$)/);
-                            if (nowPath)
-                                localPathPrefix = decodeURIComponent(nowPath[1]);
-                            GM_setClipboard(parseResult.bdcode.replace(new RegExp("(#" + localPathPrefix + "/)|(#/)", "g"), "#"));
-                        }
-                    }
+                    GM_setClipboard(_this.getBdlinks(parseResult.bdcode, with_path, GM_getValue("pathType") == "absolute").join('\n'));
                     external_Swal_default().getConfirmButton().innerText = "复制成功,点击右上关闭";
                     return false;
                 }
@@ -1355,7 +1362,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
             data = data.response;
             if (!data.error_code) {
                 if (data.list[0].isdir) {
-                    console.log(1111);
                     file.isdir = 1;
                     file.errno = 900;
                     _this.generateBdlink(i + 1);

@@ -296,7 +296,6 @@ export default class GeneratebdlinkTask {
         data = data.response;
         if (!data.error_code) {
           if (data.list[0].isdir) {
-            console.log(1111);
             file.isdir = 1;
             file.errno = 900;
             this.generateBdlink(i + 1);

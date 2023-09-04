@@ -38,9 +38,7 @@ export function parsefileInfo(fileInfoList: Array<FileInfo>) {
     // 成功文件
     if (0 === item.errno || undefined === item.errno) {
       successInfo += `<p>${item.path}</p>`;
-      bdcode += `${item.md5}${item.md5s && "#" + item.md5s}#${item.size}#${
-        item.path
-      }\n`;
+      bdcode += `${item.md5}${item.md5s && "#" + item.md5s}#${item.size}#${item.path}\n`;
       successList.push(item);
     }
     // 失败文件
