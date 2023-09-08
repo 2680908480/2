@@ -1792,7 +1792,7 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
     var contentMd5 = transformCase(file.md5, attempts[attemptIndex]);
     //const sliceMd5 = file.md5s.toLowerCase();
     ajax({
-        url: create_url + "&access_token=" + encodeURIComponent(this.accessToken) + (this.bdstoken ? "&bdstoken=" + this.bdstoken : ""),
+        url: create_url + "&access_token=" + encodeURIComponent(this.accessToken),
         method: "POST",
         responseType: "json",
         data: convertData({
@@ -1804,7 +1804,9 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
         }),
         headers: {
             "User-Agent": UA,
-        }
+            "cookie": "",
+        },
+        anonymous: true
     }, function (data) {
         // console.log(data.response); // debug
         if (31039 === data.response.errno && 31039 != file.errno) {

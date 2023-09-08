@@ -178,7 +178,7 @@ function tryRapiduploadCreateFile(
 
   ajax(
     {
-      url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}${this.bdstoken ? "&bdstoken=" + this.bdstoken : ""}`, // bdstoken参数不能放在data里, 否则无效
+      url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}`,
       method: "POST",
       responseType: "json",
       
@@ -191,7 +191,9 @@ function tryRapiduploadCreateFile(
       }),
       headers: {
         "User-Agent": UA,
-      }
+        "cookie": "",
+      },
+      anonymous: true
     },
     (data) => {
       // console.log(data.response); // debug
