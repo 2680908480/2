@@ -1,6 +1,7 @@
 import { TAG, version } from "@/common/const";
 import {
   setGetBdstoken,
+  setGetUserId,
   setGetShareFileList,
   setRefreshList,
   swalInstance,
@@ -29,6 +30,7 @@ export default function installMobileShare() {
     });
   });
   setGetBdstoken(() => unsafeWindow.locals.bdstoken);
+  setGetUserId(() => unsafeWindow.locals.uk);
   $(document).on("click", "#gen_bdlink_btn", () => {
     swalInstance.generatebdlinkTask.reset();
     swalInstance.generatebdlinkTask.isSharePage = true;

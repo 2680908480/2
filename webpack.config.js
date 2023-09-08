@@ -113,6 +113,7 @@ module.exports = {
         grant: [
           "GM_setValue",
           "GM_getValue",
+          "GM_listValues",
           "GM_deleteValue",
           "GM_setClipboard",
           "GM_addStyle",

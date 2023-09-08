@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.6
+// @version        3.1.7
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
 // @match          *://pan.baidu.com/disk/home*
@@ -30,6 +30,7 @@
 // @compatible     edge Tampermonkey
 // @grant          GM_setValue
 // @grant          GM_getValue
+// @grant          GM_listValues
 // @grant          GM_deleteValue
 // @grant          GM_setClipboard
 // @grant          GM_addStyle
@@ -62,7 +63,7 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -157,9 +158,9 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.6"; // 当前版本号
-var updateDate = "23.8.26"; // 更新弹窗显示的日期
-var updateInfoVer = "3.1.6"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+var version = "3.1.7"; // 当前版本号
+var updateDate = "23.9.08"; // 更新弹窗显示的日期
+var updateInfoVer = "3.1.7"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 var swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
 var baiduMobilePage = "baidu.com/wap/home";
@@ -594,7 +595,7 @@ var Swalbase = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        accessTokenPropKey = getBdstoken() + '::access_token';
+                        accessTokenPropKey = '#' + getUserId() + '::access_token';
                         lastAccessToken = GM_getValue(accessTokenPropKey);
                         if (!(GM_getValue("listen-clipboard") && !inputValue)) return [3 /*break*/, 2];
                         return [4 /*yield*/, parseClipboard()];
@@ -1854,6 +1855,10 @@ var getBdstoken; // 获取bdstoken的实现
 function setGetBdstoken(func) {
     getBdstoken = func;
 }
+var getUserId;
+function setGetUserId(func) {
+    getUserId = func;
+}
 var refreshList; // 刷新文件列表的实现
 function setRefreshList(func) {
     refreshList = func;
@@ -2239,6 +2244,7 @@ function installNew() {
         return document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData
             .bdstoken;
     });
+    setGetUserId(function () { return '' + document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData.uk; });
     $(document).on("click", "#bdlink_btn", function () {
         swalInstance.inputView();
     }); // 绑定转存秒传按钮事件
@@ -2285,6 +2291,7 @@ function installLegacy() {
     setGetShareFileList(utils_getShareFileList);
     setGetSelectedFileList(getSelectedFileListLegacy);
     setGetBdstoken(function () { return unsafeWindow.locals.get("bdstoken"); });
+    setGetUserId(function () { return unsafeWindow.locals.get("uk"); });
     loader_addBtn(); // DOM添加秒传按钮
     addGenBtn(); // DOM添加生成按钮
     $(document).on("click", "#bdlink_btn", function () {
@@ -2343,6 +2350,7 @@ function installSync() {
         return document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData
             .bdstoken;
     });
+    setGetUserId(function () { return '' + document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData.uk; });
     $(document).on("click", "#bdlink_btn", function () {
         swalInstance.inputView();
     }); // 绑定转存秒传按钮事件
@@ -2377,6 +2385,7 @@ var htmlTagSahre = "[node-type=qrCode]";
 function installShare() {
     console.info("%s version: %s DOM方式安装", TAG, version);
     setGetBdstoken(function () { return unsafeWindow.locals.get("bdstoken"); });
+    setGetUserId(function () { return unsafeWindow.locals.get("uk"); });
     setGetShareFileList(utils_getShareFileList);
     sharePage_loader_addBtn();
     $(document).on("click", "#gen_bdlink_btn_sharePage", function () {
@@ -2411,6 +2420,7 @@ function installMobile() {
         return fileList.filter(function (item) { return !!item.selected; });
     });
     setGetBdstoken(function () { return unsafeWindow.locals.bdstoken; });
+    setGetUserId(function () { return unsafeWindow.locals.uk; });
     $(document).on("click", "#bdlink_btn", function () {
         swalInstance.inputView();
     }); // 绑定转存秒传按钮事件
@@ -2457,6 +2467,7 @@ function installMobileShare() {
         });
     });
     setGetBdstoken(function () { return unsafeWindow.locals.bdstoken; });
+    setGetUserId(function () { return unsafeWindow.locals.uk; });
     $(document).on("click", "#gen_bdlink_btn", function () {
         swalInstance.generatebdlinkTask.reset();
         swalInstance.generatebdlinkTask.isSharePage = true;
@@ -2489,6 +2500,12 @@ function mobileSharePage_loader_addBtn() {
 
 
 function loaderBaidu() {
+    // remove dead keys left behind by 3.1.6
+    GM_listValues().forEach(function (key) {
+        if (key.match(/^[^#][^:]+::access_token$/)) {
+            GM_deleteValue(key);
+        }
+    });
     var load = function () {
         if (locUrl.includes(baiduNewPage)) {
             installNew();

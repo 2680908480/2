@@ -5,7 +5,7 @@
  */
 
 import { TAG, version } from "@/common/const";
-import { setGetBdstoken, setGetShareFileList, swalInstance } from "../common/const";
+import { setGetBdstoken, setGetUserId, setGetShareFileList, swalInstance } from "../common/const";
 import { getShareFileList } from "@/common/utils";
 
 const htmlBtnGenShare = // 分享页的秒传生成按钮html元素
@@ -15,6 +15,7 @@ const htmlTagSahre = "[node-type=qrCode]";
 export default function installShare() {
   console.info("%s version: %s DOM方式安装", TAG, version);
   setGetBdstoken(() => unsafeWindow.locals.get("bdstoken"));
+  setGetUserId(() => unsafeWindow.locals.get("uk"));
   setGetShareFileList(getShareFileList);
   addBtn();
   $(document).on("click", "#gen_bdlink_btn_sharePage", () => {

@@ -29,6 +29,10 @@ export var getBdstoken: () => string; // 获取bdstoken的实现
 export function setGetBdstoken(func: () => string) {
   getBdstoken = func;
 }
+export var getUserId: () => string;
+export function setGetUserId(func: () => string) {
+  getUserId = func;
+}
 export var refreshList: () => void; // 刷新文件列表的实现
 export function setRefreshList(func: () => void) {
   refreshList = func;

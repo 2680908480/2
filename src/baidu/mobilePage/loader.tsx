@@ -1,6 +1,7 @@
 import { TAG, version } from "@/common/const";
 import {
   setGetBdstoken,
+  setGetUserId,
   setGetShareFileList,
   setGetSelectedFileList,
   setRefreshList,
@@ -24,6 +25,7 @@ export default function installMobile() {
     return fileList.filter(item=>!!item.selected);
   });
   setGetBdstoken(() => unsafeWindow.locals.bdstoken);
+  setGetUserId(() => unsafeWindow.locals.uk);
   $(document).on("click", "#bdlink_btn", () => {
     swalInstance.inputView();
   }); // 绑定转存秒传按钮事件

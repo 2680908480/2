@@ -20,7 +20,7 @@ import {
   getSelectedFileList,
   illegalPathPattern,
   syncPathPrefix,
-  getBdstoken,
+  getUserId,
 } from "@/baidu/common/const";
 import GeneratebdlinkTask from "@/baidu/common/generatebdlinkTask";
 import RapiduploadTask from "@/baidu/common/rapiduploadTask";
@@ -56,7 +56,7 @@ export default class Swalbase {
 
   // 点击 "秒传链接" 后显示的弹窗
   async inputView(inputValue: string = "") {
-    const accessTokenPropKey = getBdstoken() + '::access_token';
+    const accessTokenPropKey = '#' + getUserId() + '::access_token';
     const lastAccessToken : string = GM_getValue(accessTokenPropKey);
     if (GM_getValue("listen-clipboard") && !inputValue)
       // 标志位true 且 inputValue为空(非一键秒传进入时) 从剪贴板读取有效的秒传链接

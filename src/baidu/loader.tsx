@@ -25,6 +25,12 @@ import installMobileShare from "./mobileSharePage/loader";
 import { isMobileVer } from "../common/utils";
 
 export function loaderBaidu(): void {
+  // remove dead keys left behind by 3.1.6
+  GM_listValues().forEach(key => {
+    if (key.match(/^[^#][^:]+::access_token$/)) {
+      GM_deleteValue(key);
+    }
+  });
   let load = () => {
     if (locUrl.includes(baiduNewPage)) {
       installNew();

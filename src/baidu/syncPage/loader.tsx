@@ -7,6 +7,7 @@
 import { TAG, version } from "@/common/const";
 import {
   setGetBdstoken,
+  setGetUserId,
   setGetShareFileList,
   setGetSelectedFileList,
   setRefreshList,
@@ -38,6 +39,7 @@ export default function installSync() {
       document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData
         .bdstoken
   );
+  setGetUserId(() => '' + document.querySelector(".nd-main-list, .nd-new-main-list").__vue__.yunData.uk);
   $(document).on("click", "#bdlink_btn", () => {
     swalInstance.inputView();
   }); // 绑定转存秒传按钮事件

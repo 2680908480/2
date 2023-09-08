@@ -9,6 +9,7 @@
 import { TAG, version } from "@/common/const";
 import {
   setGetBdstoken,
+  setGetUserId,
   setGetShareFileList,
   setGetSelectedFileList,
   setRefreshList,
@@ -33,6 +34,7 @@ export default function installLegacy() {
   setGetShareFileList(getShareFileList);
   setGetSelectedFileList(getSelectedFileListLegacy);
   setGetBdstoken(() => unsafeWindow.locals.get("bdstoken"));
+  setGetUserId(() => unsafeWindow.locals.get("uk"));
   addBtn(); // DOM添加秒传按钮
   addGenBtn(); // DOM添加生成按钮
   $(document).on("click", "#bdlink_btn", () => {

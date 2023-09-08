@@ -4,9 +4,9 @@
  * @Description: 存放各种全局常量对象
  */
 
-export const version = "3.1.6"; // 当前版本号
-export const updateDate = "23.8.26"; // 更新弹窗显示的日期
-export const updateInfoVer = "3.1.6"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+export const version = "3.1.7"; // 当前版本号
+export const updateDate = "23.9.08"; // 更新弹窗显示的日期
+export const updateInfoVer = "3.1.7"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 export const swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 export const locUrl: string = location.href;
 export const baiduMobilePage = "baidu.com/wap/home";
