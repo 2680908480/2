@@ -194,16 +194,16 @@ export default class Swalbase {
             pathValue = syncPathPrefix + pathValue; // 补全同步页路径前缀
           console.log(`秒传文件保存到: ${pathValue}`); // debug
           this.rapiduploadTask.savePath = pathValue;
-          this.processView();
+          this.processView(false);
         }
       }
     });
   }
 
   // 转存/生成过程中的弹窗
-  processView() {
+  processView(isGen: boolean) {
     let swalArg : any;
-    if (this.generatebdlinkTask.isDownload) {
+    if (isGen && this.generatebdlinkTask.isDownload) {
       swalArg = {
         title: "直接下载中",
         html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -211,7 +211,7 @@ export default class Swalbase {
           Swal.showLoading();
         },
       };
-    } else if (this.generatebdlinkTask.isGenView) {
+    } else if (isGen) {
       swalArg = {
         title: "秒传生成中",
         html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -345,7 +345,7 @@ export default class Swalbase {
       } else if (result.dismiss === Swal.DismissReason.cancel)
         this.generatebdlinkTask.recursive = false;
       else return;
-      this.processView();
+      this.processView(true);
       this.generatebdlinkTask.scanFile(0);
     });
   }
@@ -411,7 +411,7 @@ export default class Swalbase {
             path: filePath,
           });
         });
-        this.processView(); // 显示进度弹窗
+        this.processView(true); // 显示进度弹窗
         this.genFileWork(false, true); // 跳过获取选择文件列表和扫描文件夹的步骤
         this.generatebdlinkTask.generateBdlink(0); // 开始生成任务
       }
@@ -488,12 +488,12 @@ export default class Swalbase {
 
     if (this.generatebdlinkTask.isSharePage) {
       this.generatebdlinkTask.onHasNoDir = () => {
-        this.processView();
+        this.processView(true);
         this.generatebdlinkTask.scanShareFile(0);
       };
     } else {
       this.generatebdlinkTask.onHasNoDir = () => {
-        this.processView();
+        this.processView(true);
         this.generatebdlinkTask.generateBdlink(0);
       };
       this.generatebdlinkTask.onHasDir = () => this.checkRecursive();
@@ -506,7 +506,7 @@ export default class Swalbase {
     if (GM_getValue("unfinish")) {
       this.genUnfinish(
         () => {
-          this.processView();
+          this.processView(true);
           this.genFileWork(true, false);
           let unfinishInfo: any = GM_getValue("unfinish");
           this.generatebdlinkTask.fileInfoList = unfinishInfo.file_info_list;

@@ -733,7 +733,7 @@ var Swalbase = /** @class */ (function () {
                                         pathValue = syncPathPrefix + pathValue; // 补全同步页路径前缀
                                     console.log("\u79D2\u4F20\u6587\u4EF6\u4FDD\u5B58\u5230: " + pathValue); // debug
                                     _this.rapiduploadTask.savePath = pathValue;
-                                    _this.processView();
+                                    _this.processView(false);
                                 }
                             }
                         });
@@ -743,10 +743,10 @@ var Swalbase = /** @class */ (function () {
         });
     };
     // 转存/生成过程中的弹窗
-    Swalbase.prototype.processView = function () {
+    Swalbase.prototype.processView = function (isGen) {
         var _this = this;
         var swalArg;
-        if (this.generatebdlinkTask.isDownload) {
+        if (isGen && this.generatebdlinkTask.isDownload) {
             swalArg = {
                 title: "直接下载中",
                 html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -755,7 +755,7 @@ var Swalbase = /** @class */ (function () {
                 },
             };
         }
-        else if (this.generatebdlinkTask.isGenView) {
+        else if (isGen) {
             swalArg = {
                 title: "秒传生成中",
                 html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -879,7 +879,7 @@ var Swalbase = /** @class */ (function () {
                 _this.generatebdlinkTask.recursive = false;
             else
                 return;
-            _this.processView();
+            _this.processView(true);
             _this.generatebdlinkTask.scanFile(0);
         });
     };
@@ -945,7 +945,7 @@ var Swalbase = /** @class */ (function () {
                         path: filePath,
                     });
                 });
-                _this.processView(); // 显示进度弹窗
+                _this.processView(true); // 显示进度弹窗
                 _this.genFileWork(false, true); // 跳过获取选择文件列表和扫描文件夹的步骤
                 _this.generatebdlinkTask.generateBdlink(0); // 开始生成任务
             }
@@ -1013,13 +1013,13 @@ var Swalbase = /** @class */ (function () {
         };
         if (this.generatebdlinkTask.isSharePage) {
             this.generatebdlinkTask.onHasNoDir = function () {
-                _this.processView();
+                _this.processView(true);
                 _this.generatebdlinkTask.scanShareFile(0);
             };
         }
         else {
             this.generatebdlinkTask.onHasNoDir = function () {
-                _this.processView();
+                _this.processView(true);
                 _this.generatebdlinkTask.generateBdlink(0);
             };
             this.generatebdlinkTask.onHasDir = function () { return _this.checkRecursive(); };
@@ -1032,7 +1032,7 @@ var Swalbase = /** @class */ (function () {
         var _this = this;
         if (GM_getValue("unfinish")) {
             this.genUnfinish(function () {
-                _this.processView();
+                _this.processView(true);
                 _this.genFileWork(true, false);
                 var unfinishInfo = GM_getValue("unfinish");
                 _this.generatebdlinkTask.fileInfoList = unfinishInfo.file_info_list;
@@ -1190,7 +1190,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
     }
     GeneratebdlinkTask.prototype.reset = function () {
         this.isDownload = false;
-        this.isGenView = false;
         this.isSharePage = false;
         this.recursive = false;
         this.savePath = "";

@@ -57,7 +57,6 @@ const standardRetry = {
 export default class GeneratebdlinkTask {
   isSharePage: boolean; // 分享页标记
   isDownload: boolean; // 直接下载模式
-  isGenView: boolean; // 生成页(秒传框输入gen)标记
   recursive: boolean; // 递归生成标记
   savePath: string;
   dirList: Array<string>;
@@ -74,7 +73,6 @@ export default class GeneratebdlinkTask {
 
   reset(): void {
     this.isDownload = false;
-    this.isGenView = false;
     this.isSharePage = false;
     this.recursive = false;
     this.savePath = "";
