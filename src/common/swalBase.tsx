@@ -194,24 +194,41 @@ export default class Swalbase {
             pathValue = syncPathPrefix + pathValue; // 补全同步页路径前缀
           console.log(`秒传文件保存到: ${pathValue}`); // debug
           this.rapiduploadTask.savePath = pathValue;
-          this.processView(false);
+          this.processView();
         }
       }
     });
   }
 
   // 转存/生成过程中的弹窗
-  processView(isGen: boolean) {
-    let swalArg = {
-      title: isGen ? "秒传生成中" : "文件转存中",
-      html: isGen
-        ? "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>"
-        : "正在转存第 <file_num>0</file_num> 个",
-      willOpen: () => {
-        Swal.showLoading();
-        isGen || this.saveFileWork();
-      },
-    };
+  processView() {
+    let swalArg : any;
+    if (this.generatebdlinkTask.isDownload) {
+      swalArg = {
+        title: "直接下载中",
+        html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      };
+    } else if (this.generatebdlinkTask.isGenView) {
+      swalArg = {
+        title: "秒传生成中",
+        html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      };
+    } else {
+      swalArg = {
+        title: "文件转存中",
+        html: "正在转存第 <file_num>0</file_num> 个",
+        willOpen: () => {
+          Swal.showLoading();
+          this.saveFileWork();
+        },
+      };
+    }
     Swal.fire(this.mergeArg(SwalConfig.processView, swalArg));
   }
 
@@ -241,11 +258,12 @@ export default class Swalbase {
   }
   
   // 转存/生成秒传完成的弹窗
-  finishView(isGen: boolean) {
-    let action = isGen ? "生成" : "转存";
-    let fileInfoList = isGen
-      ? this.generatebdlinkTask.fileInfoList
-      : this.rapiduploadTask.fileInfoList;
+  finishView(isGenTask: boolean) {
+    let fileInfoList = isGenTask
+    ? this.generatebdlinkTask.fileInfoList
+    : this.rapiduploadTask.fileInfoList;
+    const isGen = isGenTask && !this.generatebdlinkTask.isDownload;
+    let action = isGenTask && isGen ? "生成" : isGenTask ? "下载" : "转存";
     let parseResult = parsefileInfo(fileInfoList);
     this.parseResult = parseResult;
     let checkboxArg = {
@@ -271,7 +289,7 @@ export default class Swalbase {
       willOpen: () => {
         if (isGen) {
           GM_setValue("unClose", true); // 生成模式设置结果窗口未关闭的标记
-        } else if (successAny) {
+        } else if (successAny && !isGenTask) {
           this.addOpenDirBtn(); // 转存模式时添加 "打开目录" 按钮
         }
       },
@@ -302,7 +320,9 @@ export default class Swalbase {
           return false;
         } else {
           // 转存模式, "确定" 按钮
-          refreshList(); // 调用刷新文件列表的方法
+          if (!isGenTask) {
+            refreshList(); // 调用刷新文件列表的方法
+          }
           return undefined;
         }
       },
@@ -325,7 +345,7 @@ export default class Swalbase {
       } else if (result.dismiss === Swal.DismissReason.cancel)
         this.generatebdlinkTask.recursive = false;
       else return;
-      this.processView(true);
+      this.processView();
       this.generatebdlinkTask.scanFile(0);
     });
   }
@@ -391,7 +411,7 @@ export default class Swalbase {
             path: filePath,
           });
         });
-        this.processView(true); // 显示进度弹窗
+        this.processView(); // 显示进度弹窗
         this.genFileWork(false, true); // 跳过获取选择文件列表和扫描文件夹的步骤
         this.generatebdlinkTask.generateBdlink(0); // 开始生成任务
       }
@@ -468,12 +488,12 @@ export default class Swalbase {
 
     if (this.generatebdlinkTask.isSharePage) {
       this.generatebdlinkTask.onHasNoDir = () => {
-        this.processView(true);
+        this.processView();
         this.generatebdlinkTask.scanShareFile(0);
       };
     } else {
       this.generatebdlinkTask.onHasNoDir = () => {
-        this.processView(true);
+        this.processView();
         this.generatebdlinkTask.generateBdlink(0);
       };
       this.generatebdlinkTask.onHasDir = () => this.checkRecursive();
@@ -486,7 +506,7 @@ export default class Swalbase {
     if (GM_getValue("unfinish")) {
       this.genUnfinish(
         () => {
-          this.processView(true);
+          this.processView();
           this.genFileWork(true, false);
           let unfinishInfo: any = GM_getValue("unfinish");
           this.generatebdlinkTask.fileInfoList = unfinishInfo.file_info_list;

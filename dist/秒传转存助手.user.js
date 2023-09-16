@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.7
+// @version        3.1.8
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
 // @match          *://pan.baidu.com/disk/home*
@@ -63,7 +63,7 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.8</dt>\r\n      <dd>优化稳定性及改善错误时信息</dd>\r\n      <dd>直接下载功能 (仅适用于小文件!)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -158,9 +158,9 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.7"; // 当前版本号
-var updateDate = "23.9.08"; // 更新弹窗显示的日期
-var updateInfoVer = "3.1.7"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+var version = "3.1.8"; // 当前版本号
+var updateDate = "23.9.16"; // 更新弹窗显示的日期
+var updateInfoVer = "3.1.8"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 var swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
 var baiduMobilePage = "baidu.com/wap/home";
@@ -733,7 +733,7 @@ var Swalbase = /** @class */ (function () {
                                         pathValue = syncPathPrefix + pathValue; // 补全同步页路径前缀
                                     console.log("\u79D2\u4F20\u6587\u4EF6\u4FDD\u5B58\u5230: " + pathValue); // debug
                                     _this.rapiduploadTask.savePath = pathValue;
-                                    _this.processView(false);
+                                    _this.processView();
                                 }
                             }
                         });
@@ -743,18 +743,37 @@ var Swalbase = /** @class */ (function () {
         });
     };
     // 转存/生成过程中的弹窗
-    Swalbase.prototype.processView = function (isGen) {
+    Swalbase.prototype.processView = function () {
         var _this = this;
-        var swalArg = {
-            title: isGen ? "秒传生成中" : "文件转存中",
-            html: isGen
-                ? "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>"
-                : "正在转存第 <file_num>0</file_num> 个",
-            willOpen: function () {
-                external_Swal_default().showLoading();
-                isGen || _this.saveFileWork();
-            },
-        };
+        var swalArg;
+        if (this.generatebdlinkTask.isDownload) {
+            swalArg = {
+                title: "直接下载中",
+                html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
+                willOpen: function () {
+                    external_Swal_default().showLoading();
+                },
+            };
+        }
+        else if (this.generatebdlinkTask.isGenView) {
+            swalArg = {
+                title: "秒传生成中",
+                html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
+                willOpen: function () {
+                    external_Swal_default().showLoading();
+                },
+            };
+        }
+        else {
+            swalArg = {
+                title: "文件转存中",
+                html: "正在转存第 <file_num>0</file_num> 个",
+                willOpen: function () {
+                    external_Swal_default().showLoading();
+                    _this.saveFileWork();
+                },
+            };
+        }
         external_Swal_default().fire(this.mergeArg(SwalConfig.processView, swalArg));
     };
     Swalbase.prototype.getBdlinks = function (bdcode, with_path, absolute_path_mode) {
@@ -785,12 +804,13 @@ var Swalbase = /** @class */ (function () {
         return bdlinks;
     };
     // 转存/生成秒传完成的弹窗
-    Swalbase.prototype.finishView = function (isGen) {
+    Swalbase.prototype.finishView = function (isGenTask) {
         var _this = this;
-        var action = isGen ? "生成" : "转存";
-        var fileInfoList = isGen
+        var fileInfoList = isGenTask
             ? this.generatebdlinkTask.fileInfoList
             : this.rapiduploadTask.fileInfoList;
+        var isGen = isGenTask && !this.generatebdlinkTask.isDownload;
+        var action = isGenTask && isGen ? "生成" : isGenTask ? "下载" : "转存";
         var parseResult = parsefileInfo(fileInfoList);
         this.parseResult = parseResult;
         var checkboxArg = {
@@ -808,7 +828,7 @@ var Swalbase = /** @class */ (function () {
                 if (isGen) {
                     GM_setValue("unClose", true); // 生成模式设置结果窗口未关闭的标记
                 }
-                else if (successAny) {
+                else if (successAny && !isGenTask) {
                     _this.addOpenDirBtn(); // 转存模式时添加 "打开目录" 按钮
                 }
             }, 
@@ -835,7 +855,9 @@ var Swalbase = /** @class */ (function () {
                 }
                 else {
                     // 转存模式, "确定" 按钮
-                    refreshList(); // 调用刷新文件列表的方法
+                    if (!isGenTask) {
+                        refreshList(); // 调用刷新文件列表的方法
+                    }
                     return undefined;
                 }
             } });
@@ -857,7 +879,7 @@ var Swalbase = /** @class */ (function () {
                 _this.generatebdlinkTask.recursive = false;
             else
                 return;
-            _this.processView(true);
+            _this.processView();
             _this.generatebdlinkTask.scanFile(0);
         });
     };
@@ -923,7 +945,7 @@ var Swalbase = /** @class */ (function () {
                         path: filePath,
                     });
                 });
-                _this.processView(true); // 显示进度弹窗
+                _this.processView(); // 显示进度弹窗
                 _this.genFileWork(false, true); // 跳过获取选择文件列表和扫描文件夹的步骤
                 _this.generatebdlinkTask.generateBdlink(0); // 开始生成任务
             }
@@ -991,13 +1013,13 @@ var Swalbase = /** @class */ (function () {
         };
         if (this.generatebdlinkTask.isSharePage) {
             this.generatebdlinkTask.onHasNoDir = function () {
-                _this.processView(true);
+                _this.processView();
                 _this.generatebdlinkTask.scanShareFile(0);
             };
         }
         else {
             this.generatebdlinkTask.onHasNoDir = function () {
-                _this.processView(true);
+                _this.processView();
                 _this.generatebdlinkTask.generateBdlink(0);
             };
             this.generatebdlinkTask.onHasDir = function () { return _this.checkRecursive(); };
@@ -1010,7 +1032,7 @@ var Swalbase = /** @class */ (function () {
         var _this = this;
         if (GM_getValue("unfinish")) {
             this.genUnfinish(function () {
-                _this.processView(true);
+                _this.processView();
                 _this.genFileWork(true, false);
                 var unfinishInfo = GM_getValue("unfinish");
                 _this.generatebdlinkTask.fileInfoList = unfinishInfo.file_info_list;
@@ -1065,7 +1087,9 @@ var Swalbase = /** @class */ (function () {
  * @Author: mengzonefire
  * @Date: 2021-08-27 14:48:24
  * @LastEditTime: 2023-02-14 04:10:09
+ * @LastEditTime: 2023-09-16
  * @LastEditors: mengzonefire
+ * @LastEditors: tousakasp
  * @Description: 自封装JQ ajax方法
  */
 var ajax_assign = (undefined && undefined.__assign) || function () {
@@ -1081,20 +1105,48 @@ var ajax_assign = (undefined && undefined.__assign) || function () {
 };
 
 var DEBUG = false;
-function ajax(config, callback, failback) {
-    GM_xmlhttpRequest(ajax_assign(ajax_assign({}, config), { onload: function (r) {
-            // console.log(r); // debug
-            if (Math.floor(r.status / 100) === 2) {
-                if (DEBUG) {
-                    console.info("%s version: %s 接口返回: %s", TAG, version, JSON.stringify(r.response)); // user debug
+function ajax(config, callback, failback, retry) {
+    if (retry === void 0) { retry = {
+        max: 0,
+        delay: 0,
+        accepts: function () { return true; }
+    }; }
+    function execute(retryLeft) {
+        GM_xmlhttpRequest(ajax_assign(ajax_assign({}, config), { onload: function (r) {
+                // console.log(r); // debug
+                if (Math.floor(r.status / 100) === 2) {
+                    if (DEBUG) {
+                        console.info("%s version: %s 接口返回: %s", TAG, version, JSON.stringify(r.response)); // user debug
+                    }
+                    if (retryLeft <= 0 || retry.accepts(r.status, r.response)) {
+                        callback(r);
+                    }
+                    else {
+                        scheduleRetry();
+                    }
                 }
-                callback(r);
-            }
-            else
-                failback(r.status);
-        }, onerror: function () {
-            failback(ajaxError);
-        } }));
+                else {
+                    if (retryLeft <= 0 || retry.accepts(r.status, null)) {
+                        failback(r.status);
+                    }
+                    else {
+                        scheduleRetry();
+                    }
+                }
+            }, onerror: function () {
+                if (retryLeft <= 0 || retry.accepts(ajaxError, null)) {
+                    failback(ajaxError);
+                }
+                else {
+                    scheduleRetry();
+                }
+            } }));
+        function scheduleRetry() {
+            console.info("\u91CD\u8BD5 " + config.url);
+            setTimeout(function () { return execute(retryLeft - 1); }, retry.delay);
+        }
+    }
+    execute(retry.max);
 }
 
 ;// CONCATENATED MODULE: ./src/baidu/common/generatebdlinkTask.tsx
@@ -1112,11 +1164,32 @@ function ajax(config, callback, failback) {
 // import { rapiduploadCreateFile } from "./rapiduploadTask";
 var listMinDelayMsec = 1000;
 var retryDelaySec = 30;
+var standardRetry = {
+    max: 3,
+    delay: 1000,
+    accepts: function (statusCode, response) {
+        if (statusCode == 200) {
+            if (response != null) {
+                if (response.errno === 2 || response.errno === -6 || response.errno === 514) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        var statusClass = Math.floor(statusCode / 100);
+        if (statusClass <= 3)
+            return true;
+        if (statusCode === 403) // assume unrecoverable
+            return true;
+        return false;
+    }
+};
 // 普通生成:
 var GeneratebdlinkTask = /** @class */ (function () {
     function GeneratebdlinkTask() {
     }
     GeneratebdlinkTask.prototype.reset = function () {
+        this.isDownload = false;
         this.isGenView = false;
         this.isSharePage = false;
         this.recursive = false;
@@ -1382,7 +1455,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
         }, function (statusCode) {
             file.errno = statusCode === 404 ? 909 : statusCode;
             _this.generateBdlink(i + 1);
-        });
+        }, standardRetry);
     };
     /**
      * @description: 获取分享页的文件dlink(下载直链)
@@ -1412,7 +1485,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
                 }
                 // 请求报错
                 onFailed(data.errno);
-            }, onFailed);
+            }, onFailed, standardRetry);
         }
         function getDlink(file) {
             var _this = this;
@@ -1433,12 +1506,17 @@ var GeneratebdlinkTask = /** @class */ (function () {
                 data = data.response;
                 // 请求正常
                 if (!data.errno) {
-                    _this.downloadFileData(i, data.list[0].dlink);
+                    if (_this.isDownload) {
+                        _this.directFileDownload(i, data.list[0].dlink);
+                    }
+                    else {
+                        _this.acquireFileMd5(i, data.list[0].dlink);
+                    }
                     return;
                 }
                 // 请求报错
                 onFailed(data.errno);
-            }, onFailed);
+            }, onFailed, standardRetry);
         }
         getTplconfig.call(this, file);
     };
@@ -1463,7 +1541,12 @@ var GeneratebdlinkTask = /** @class */ (function () {
             data = data.response;
             // 请求正常
             if (!data.errno) {
-                _this.downloadFileData(i, data.info[0].dlink);
+                if (_this.isDownload) {
+                    _this.directFileDownload(i, data.info[0].dlink);
+                }
+                else {
+                    _this.acquireFileMd5(i, data.info[0].dlink);
+                }
                 return;
             }
             // 请求报错
@@ -1472,14 +1555,14 @@ var GeneratebdlinkTask = /** @class */ (function () {
         }, function (statusCode) {
             file.errno = statusCode;
             _this.generateBdlink(i + 1);
-        });
+        }, standardRetry);
     };
     /**
-     * @description: 调用下载直链
+     * @description: get MD5
      * @param {number} i
      * @param {string} dlink
      */
-    GeneratebdlinkTask.prototype.downloadFileData = function (i, dlink) {
+    GeneratebdlinkTask.prototype.acquireFileMd5 = function (i, dlink) {
         var _this = this;
         var file = this.fileInfoList[i];
         //let dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
@@ -1502,7 +1585,45 @@ var GeneratebdlinkTask = /** @class */ (function () {
             else
                 file.errno = statusCode;
             _this.generateBdlink(i + 1);
-        });
+        }, standardRetry);
+    };
+    /**
+     * @description: 调用下载直链
+     * @param {number} i
+     * @param {string} dlink
+     */
+    GeneratebdlinkTask.prototype.directFileDownload = function (i, dlink) {
+        var _this = this;
+        var file = this.fileInfoList[i];
+        file.path;
+        ajax({
+            url: dlink,
+            method: "GET",
+            responseType: "blob",
+            headers: {
+                Range: "bytes=0-" + file.size,
+                "User-Agent": UA,
+            },
+            onprogress: this.onProgress,
+        }, function (data) {
+            _this.onProgress({ loaded: 100, total: 100 }); // 100%
+            if (data.response.size !== file.size) {
+                file.errno = 413;
+            }
+            var tmpUrl = URL.createObjectURL(data.response);
+            var tmpLink = document.createElement('a');
+            tmpLink.href = tmpUrl;
+            tmpLink.download = file.path.replace(/^.*[\/\\]/, '');
+            tmpLink.click();
+            URL.revokeObjectURL(tmpUrl);
+            _this.generateBdlink(i + 1);
+        }, function (statusCode) {
+            if (statusCode === 404)
+                file.errno = 909;
+            else
+                file.errno = statusCode;
+            _this.generateBdlink(i + 1);
+        }, standardRetry);
     };
     /**
      * @description: 解析直链请求返回的数据
@@ -1527,7 +1648,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
             // 默认下载接口未拿到md5, 尝试使用旧下载接口, 旧接口请求文件size大于3.9G会返回403
             // 分享页的生成任务不要调用旧接口
             file.retry_996 = true;
-            this.downloadFileData(i, pcs_url + ("&path=" + encodeURIComponent(file.path)));
+            this.acquireFileMd5(i, pcs_url + ("&path=" + encodeURIComponent(file.path)));
             return;
         }
         else {
@@ -1666,7 +1787,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
 
 
 
-
 var RapiduploadTask = /** @class */ (function () {
     function RapiduploadTask() {
     }
@@ -1736,7 +1856,6 @@ function createDir(path, onResponsed, onFailed) {
         }),
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": UA,
         }
     }, function (data) {
         if (data.response.errno != null && 0 !== data.response.errno) {
@@ -1803,7 +1922,6 @@ function tryRapiduploadCreateFile(file, onResponsed, onFailed, attempts, attempt
             rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
         }),
         headers: {
-            "User-Agent": UA,
             "cookie": "",
         },
         anonymous: true
@@ -1892,7 +2010,8 @@ function baiduErrno(errno) {
         case 403:
             return "接口限制访问";
         case 404:
-            return "秒传未生效";
+        case 31190:
+            return "转存失败, 秒传未生效";
         case 114:
             return "转存失败";
         case 514:
@@ -2229,6 +2348,7 @@ var htmlBtnRapidNew = // 新版界面秒传按钮的html元素
  '<button id="bdlink_btn" class="mzf_new_btn"></i><span>秒传</span></button>';
 var htmlBtnGenNew = // 新版界面秒传生成按钮的html元素
  '<button id="gen_bdlink_btn" class="mzf_new_btn"></i><span>生成秒传</span></button>';
+var htmlBtnDownload = '<button id="dl_file_btn" class="mzf_new_btn"></i><span>直接下载</span></button>';
 function installNew() {
     console.info("%s version: %s DOM方式安装 (new-ui)", TAG, version);
     swalInstance.swalGlobalArgs = {
@@ -2254,6 +2374,11 @@ function installNew() {
         swalInstance.generatebdlinkTask.reset();
         swalInstance.checkUnfinish();
     }); // 绑定生成秒传按钮事件
+    $(document).on("click", "#dl_file_btn", function () {
+        swalInstance.generatebdlinkTask.reset();
+        swalInstance.generatebdlinkTask.isDownload = true;
+        swalInstance.checkUnfinish();
+    });
     addBtn();
 }
 function addBtn() {
@@ -2262,7 +2387,7 @@ function addBtn() {
     if (!target.length)
         target = $(htmlTagNew2);
     if (target.length && !$("#bdlink_btn").length)
-        target.append(htmlBtnRapidNew, htmlBtnGenNew);
+        target.append(htmlBtnRapidNew, htmlBtnGenNew, htmlBtnDownload);
     setTimeout(addBtn, 500);
 }
 
@@ -2383,6 +2508,8 @@ function syncPage_loader_addBtn() {
 
 var htmlBtnGenShare = // 分享页的秒传生成按钮html元素
  '<a id="gen_bdlink_btn_sharePage" title="生成秒传" class="g-button g-button-blue-large" style="margin-right: 5px;margin-left: 5px;"> <span class="g-button-right"> <em class="icon icon-share" style="color:#ffffff" title="生成秒传"></em> <span class="text" style="width: auto;">生成秒传</span> </span> </a>';
+var loader_htmlBtnDownload = // 分享页的秒传生成按钮html元素
+ '<a id="dl_file_btn_sharePage" title="直接下载" class="g-button g-button-red-large" style="margin-right: 5px;margin-left: 5px;"> <span class="g-button-right"> <em class="icon icon-download" style="color:#ffffff" title="直接下载"></em> <span class="text" style="width: auto;">直接下载</span> </span> </a>';
 var htmlTagSahre = "[node-type=qrCode]";
 function installShare() {
     console.info("%s version: %s DOM方式安装", TAG, version);
@@ -2395,10 +2522,18 @@ function installShare() {
         swalInstance.generatebdlinkTask.isSharePage = true;
         swalInstance.genFileWork(false, false);
     }); // 绑定生成按钮事件
+    $(document).on("click", "#dl_file_btn_sharePage", function () {
+        swalInstance.generatebdlinkTask.reset();
+        swalInstance.generatebdlinkTask.isSharePage = true;
+        swalInstance.generatebdlinkTask.isDownload = true;
+        swalInstance.genFileWork(false, false);
+    }); // 绑定生成按钮事件
 }
 function sharePage_loader_addBtn() {
-    if ($(htmlTagSahre).length)
+    if ($(htmlTagSahre).length) {
         $(htmlTagSahre).before(htmlBtnGenShare);
+        $(htmlTagSahre).before(loader_htmlBtnDownload);
+    }
     else
         setTimeout(sharePage_loader_addBtn, 100);
 }

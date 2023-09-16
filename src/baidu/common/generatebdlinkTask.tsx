@@ -56,6 +56,7 @@ const standardRetry = {
 // 普通生成:
 export default class GeneratebdlinkTask {
   isSharePage: boolean; // 分享页标记
+  isDownload: boolean; // 直接下载模式
   isGenView: boolean; // 生成页(秒传框输入gen)标记
   recursive: boolean; // 递归生成标记
   savePath: string;
@@ -72,6 +73,7 @@ export default class GeneratebdlinkTask {
   onHasNoDir: () => void;
 
   reset(): void {
+    this.isDownload = false;
     this.isGenView = false;
     this.isSharePage = false;
     this.recursive = false;
@@ -397,7 +399,11 @@ export default class GeneratebdlinkTask {
           data = data.response;
           // 请求正常
           if (!data.errno) {
-            this.downloadFileData(i, data.list[0].dlink);
+            if (this.isDownload) {
+              this.directFileDownload(i, data.list[0].dlink);
+            } else {
+              this.acquireFileMd5(i, data.list[0].dlink);
+            }
             return;
           }
           // 请求报错
@@ -433,7 +439,11 @@ export default class GeneratebdlinkTask {
         data = data.response;
         // 请求正常
         if (!data.errno) {
-          this.downloadFileData(i, data.info[0].dlink);
+          if (this.isDownload) {
+            this.directFileDownload(i, data.info[0].dlink);
+          } else {
+            this.acquireFileMd5(i, data.info[0].dlink);
+          }
           return;
         }
         // 请求报错
@@ -449,11 +459,11 @@ export default class GeneratebdlinkTask {
   }
 
   /**
-   * @description: 调用下载直链
+   * @description: get MD5
    * @param {number} i
    * @param {string} dlink
    */
-  downloadFileData(i: number, dlink: string): void {
+  acquireFileMd5(i: number, dlink: string): void {
     let file = this.fileInfoList[i];
     //let dlSize = file.size < 262144 ? 1 : 262143; //slice-md5: 文件前256KiB的md5, size<256KiB则直接取md5即可, 无需下载文件数据
     let dlSize = 1;
@@ -471,6 +481,47 @@ export default class GeneratebdlinkTask {
       (data) => {
         this.onProgress({ loaded: 100, total: 100 }); // 100%
         this.parseDownloadData(i, data);
+      },
+      (statusCode) => {
+        if (statusCode === 404) file.errno = 909;
+        else file.errno = statusCode;
+        this.generateBdlink(i + 1);
+      },
+      standardRetry
+    );
+  }
+
+  /**
+   * @description: 调用下载直链
+   * @param {number} i
+   * @param {string} dlink
+   */
+   directFileDownload(i: number, dlink: string): void {
+    let file = this.fileInfoList[i];
+    file.path
+    ajax(
+      {
+        url: dlink,
+        method: "GET",
+        responseType: "blob",
+        headers: {
+          Range: `bytes=0-${file.size}`,
+          "User-Agent": UA,
+        },
+        onprogress: this.onProgress,
+      },
+      (data) => {
+        this.onProgress({ loaded: 100, total: 100 }); // 100%
+        if (data.response.size !== file.size) {
+          file.errno = 413;
+        }
+        const tmpUrl = URL.createObjectURL(data.response);
+        const tmpLink = document.createElement('a');
+        tmpLink.href = tmpUrl;
+        tmpLink.download = file.path.replace(/^.*[\/\\]/, '');
+        tmpLink.click();
+        URL.revokeObjectURL(tmpUrl);
+        this.generateBdlink(i + 1);
       },
       (statusCode) => {
         if (statusCode === 404) file.errno = 909;
@@ -502,7 +553,7 @@ export default class GeneratebdlinkTask {
       // 默认下载接口未拿到md5, 尝试使用旧下载接口, 旧接口请求文件size大于3.9G会返回403
       // 分享页的生成任务不要调用旧接口
       file.retry_996 = true;
-      this.downloadFileData(
+      this.acquireFileMd5(
         i,
         pcs_url + `&path=${encodeURIComponent(file.path)}`
       );
