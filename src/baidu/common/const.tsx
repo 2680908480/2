@@ -68,7 +68,8 @@ export function baiduErrno(errno: number) {
     case 403:
       return "接口限制访问";
     case 404:
-      return "秒传未生效";
+    case 31190:
+      return "转存失败, 秒传未生效";
     case 114:
       return "转存失败";
     case 514:

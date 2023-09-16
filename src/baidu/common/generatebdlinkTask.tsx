@@ -31,6 +31,27 @@ import {
 
 const listMinDelayMsec = 1000;
 const retryDelaySec = 30;
+const standardRetry = {
+  max: 3,
+  delay: 1000,
+  accepts(statusCode: number, response: any): boolean {
+    if (statusCode == 200) {
+      if (response != null) {
+        if (response.errno === 2 || response.errno === -6  || response.errno === 514) {
+          return false;
+        }
+      }
+      return true;
+    }
+    const statusClass = Math.floor(statusCode / 100);
+    if (statusClass <= 3)
+      return true;
+    if (statusCode === 403) // assume unrecoverable
+      return true;
+    return false;
+  }
+};
+
 
 // 普通生成:
 export default class GeneratebdlinkTask {
@@ -315,7 +336,8 @@ export default class GeneratebdlinkTask {
       (statusCode) => {
         file.errno = statusCode === 404 ? 909 : statusCode;
         this.generateBdlink(i + 1);
-      }
+      },
+      standardRetry
     );
   }
 
@@ -351,7 +373,8 @@ export default class GeneratebdlinkTask {
           // 请求报错
           onFailed(data.errno);
         },
-        onFailed
+        onFailed,
+        standardRetry
       );
     }
     function getDlink(file: FileInfo): void {
@@ -380,7 +403,8 @@ export default class GeneratebdlinkTask {
           // 请求报错
           onFailed(data.errno);
         },
-        onFailed
+        onFailed,
+        standardRetry
       );
     }
     getTplconfig.call(this, file);
@@ -419,7 +443,8 @@ export default class GeneratebdlinkTask {
       (statusCode) => {
         file.errno = statusCode;
         this.generateBdlink(i + 1);
-      }
+      },
+      standardRetry
     );
   }
 
@@ -451,7 +476,8 @@ export default class GeneratebdlinkTask {
         if (statusCode === 404) file.errno = 909;
         else file.errno = statusCode;
         this.generateBdlink(i + 1);
-      }
+      },
+      standardRetry
     );
   }
 

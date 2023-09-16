@@ -5,7 +5,6 @@
  */
 
 import ajax from "@/common/ajax";
-import { UA } from "@/common/const";
 import { convertData, suffixChange } from "@/common/utils";
 import {
   create_url,
@@ -103,7 +102,6 @@ export function createDir(
       }),
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent": UA,
       }
     },
     (data) => {
@@ -190,7 +188,6 @@ function tryRapiduploadCreateFile(
         rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
       }),
       headers: {
-        "User-Agent": UA,
         "cookie": "",
       },
       anonymous: true
