@@ -172,6 +172,7 @@ var ajaxError = 514; // 自定义ajax请求失败时的错误码(不能与http s
 var bdlinkPrefix = "https://pan.baidu.com/#bdlink="; // 一键秒传链接的前缀
 var commandList = ["set", "gen", "info"]; // 转存输入框内支持输入的命令
 var UA = "netdisk;"; // 自定义User-Agent
+var enableDirectDownload = false;
 var extCssUrl = {
     Default: "https://unpkg.com/@sweetalert2/theme-default@5.0.15/default.min.css",
     Dark: "https://unpkg.com/@sweetalert2/theme-dark@5.0.15/dark.min.css",
@@ -2299,8 +2300,12 @@ function addBtn() {
     var target = $(htmlTagNew);
     if (!target.length)
         target = $(htmlTagNew2);
-    if (target.length && !$("#bdlink_btn").length)
-        target.append(htmlBtnRapidNew, htmlBtnGenNew, htmlBtnDownload);
+    if (target.length && !$("#bdlink_btn").length) {
+        target.append(htmlBtnRapidNew, htmlBtnGenNew);
+        if (enableDirectDownload) {
+            target.append(htmlBtnDownload);
+        }
+    }
     setTimeout(addBtn, 500);
 }
 
@@ -2445,7 +2450,9 @@ function installShare() {
 function sharePage_loader_addBtn() {
     if ($(htmlTagSahre).length) {
         $(htmlTagSahre).before(htmlBtnGenShare);
-        $(htmlTagSahre).before(loader_htmlBtnDownload);
+        if (enableDirectDownload) {
+            $(htmlTagSahre).before(loader_htmlBtnDownload);
+        }
     }
     else
         setTimeout(sharePage_loader_addBtn, 100);

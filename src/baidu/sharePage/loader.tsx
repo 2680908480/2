@@ -4,7 +4,7 @@
  * @Description: 文件分享页loader入口: https://pan.baidu.com/s/xxx
  */
 
-import { TAG, version } from "@/common/const";
+import { TAG, version, enableDirectDownload } from "@/common/const";
 import { setGetBdstoken, setGetUserId, setGetShareFileList, swalInstance } from "../common/const";
 import { getShareFileList } from "@/common/utils";
 
@@ -36,7 +36,9 @@ export default function installShare() {
 function addBtn() {
   if ($(htmlTagSahre).length) {
     $(htmlTagSahre).before(htmlBtnGenShare);
-    $(htmlTagSahre).before(htmlBtnDownload);
+    if (enableDirectDownload) {
+      $(htmlTagSahre).before(htmlBtnDownload);
+    }
   }
   else setTimeout(addBtn, 100);
 }

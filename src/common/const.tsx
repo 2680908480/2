@@ -18,6 +18,7 @@ export const ajaxError = 514; // 自定义ajax请求失败时的错误码(不能
 export const bdlinkPrefix = "https://pan.baidu.com/#bdlink="; // 一键秒传链接的前缀
 export const commandList = ["set", "gen", "info"]; // 转存输入框内支持输入的命令
 export const UA = "netdisk;"; // 自定义User-Agent
+export const enableDirectDownload = false;
 export const extCssUrl = {
   Default: "https://unpkg.com/@sweetalert2/theme-default@5.0.15/default.min.css",
   Dark: "https://unpkg.com/@sweetalert2/theme-dark@5.0.15/dark.min.css",

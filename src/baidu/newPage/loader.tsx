@@ -4,7 +4,7 @@
  * @Description: 新版度盘界面loader入口: https://pan.baidu.com/disk/main
  */
 
-import { TAG, version } from "@/common/const";
+import { TAG, version, enableDirectDownload } from "@/common/const";
 import {
   setGetBdstoken,
   setGetUserId,
@@ -62,7 +62,11 @@ function addBtn() {
   // 轮询添加按钮, 防止新版页面重复init时, 将按钮覆盖
   let target = $(htmlTagNew);
   if (!target.length) target = $(htmlTagNew2);
-  if (target.length && !$("#bdlink_btn").length)
-    target.append(htmlBtnRapidNew, htmlBtnGenNew, htmlBtnDownload);
+  if (target.length && !$("#bdlink_btn").length) {
+    target.append(htmlBtnRapidNew, htmlBtnGenNew);
+    if (enableDirectDownload) {
+      target.append(htmlBtnDownload);
+    }
+  }
   setTimeout(addBtn, 500);
 }
