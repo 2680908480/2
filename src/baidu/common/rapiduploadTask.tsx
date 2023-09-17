@@ -12,6 +12,7 @@ import {
   getBdstoken,
   illegalPathPattern,
 } from "./const";
+
 export default class RapiduploadTask {
   savePath: string;
   isDefaultPath: boolean;
@@ -115,65 +116,36 @@ export function createDir(
   );
 }
 
-const defaultRetryDelay = 200;
-const retryDelayIncrement = 100;
-const randomCaseRetryCount = 5;
-
-function generateRandomInt(max : number) {
-  return Math.floor(Math.random() * (max + 1));
-}
-
-function transformCase(str : string, mask : number) {
-  let next = mask;
-  return str.toLowerCase().split('').map(c => {
-    if (c >= 'a' && c <= 'z') {
-      if (next % 2 === 1) {
-        c = c.toUpperCase();
-      }
-      next = next >> 1;
-    }
-    return c;
-  })
-  .join('');
-}
-
+// 此接口测试结果如下: 错误md5->返回"errno": 31190, 正确md5+错误size->返回"errno": 2
+// 此外, 即使md5和size均正确, 连续请求时依旧有小概率返回"errno": 2, 故建议加入retry策略
+// header内添加"Content-Type": "application/x-www-form-urlencoded"，默认type为text导致随机#2
+// openapi 接口无需重试不用写法
 export function rapiduploadCreateFile(
   file: FileInfo,
   onResponsed: (data: any) => void,
   onFailed: (statusCode: number) => void,
 ): void {
-  let charCount = file.md5.toLowerCase().split('').filter(c => c >= 'a' && c <= 'z').length;
-  let maxCombination = 1 << charCount;
-  let attempts = [
-    0, // 小写成功率比较高
-    maxCombination - 1, // 大写
-  ];
-  let gen = randomCaseRetryCount;
-  while (attempts.length < maxCombination && gen > 0) {
-    let n : number;
-    do {
-      n = generateRandomInt(maxCombination - 1);
-    } while (attempts.includes(n));
-    attempts.push(n);
-    gen--;
-  }
+  const contentMd5 = file.md5.toLowerCase();
 
-  tryRapiduploadCreateFile.call(this, file, onResponsed, onFailed, attempts, 0, defaultRetryDelay);
-}
-
-// 此接口测试结果如下: 错误md5->返回"errno": 31190, 正确md5+错误size->返回"errno": 2
-// 此外, 即使md5和size均正确, 连续请求时依旧有小概率返回"errno": 2, 故建议加入retry策略
-function tryRapiduploadCreateFile(
-  file: FileInfo,
-  onResponsed: (data: any) => void,
-  onFailed: (statusCode: number) => void,
-  attempts: number[],
-  attemptIndex: number,
-  retryDelay: number = 0,
-): void {
-  const contentMd5 = transformCase(file.md5, attempts[attemptIndex]);
-  //const sliceMd5 = file.md5s.toLowerCase();
-
+  const retryPolicy = {
+    max: 1,
+    delay: 500,
+    accepts(statusCode: number, response: any): boolean {
+      if (statusCode == 200) {
+        if (response != null && response.errno === 2) {
+          return false;
+        }
+        return true;
+      }
+      const statusClass = Math.floor(statusCode / 100);
+      if (statusClass <= 3)
+        return true;
+      if (statusCode === 403 || statusCode === 404)
+        return true;
+      return false;
+    }
+  };
+  
   ajax(
     {
       url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}`,
@@ -182,13 +154,14 @@ function tryRapiduploadCreateFile(
       
       data: convertData({
         block_list: JSON.stringify([contentMd5]),
-        path: this.savePath + file.path.replace(illegalPathPattern, "_"),
+        path: this.savePath + file.path.replace(illegalPathPattern, "_").replace(/\.rar$/, '.RAR'),
         size: file.size,
         isdir: 0,
         rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
       }),
       headers: {
         "cookie": "",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       anonymous: true
     },
@@ -197,16 +170,12 @@ function tryRapiduploadCreateFile(
       if (31039 === data.response.errno && 31039 != file.errno) {
         file.errno = 31039;
         file.path = suffixChange(file.path);
-        tryRapiduploadCreateFile.call(this, file, onResponsed, onFailed, attempts, attemptIndex);
-      } else if (2 === data.response.errno && attempts.length > attemptIndex + 1) {
-        //console.log(`转存接口错误, 重试${retry + 1}次: ${file.path}`); // debug
-        setTimeout(() => {
-          tryRapiduploadCreateFile.call(this, file, onResponsed, onFailed, attempts, attemptIndex + 1, retryDelay + retryDelayIncrement);
-        }, retryDelay);
+        rapiduploadCreateFile.call(this, file, onResponsed, onFailed);
       } else if (0 !== data.response.errno) {
         onFailed(data.response.errno);
       } else onResponsed(data);
     },
-    onFailed
+    onFailed,
+    retryPolicy
   );
 }

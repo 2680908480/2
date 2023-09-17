@@ -27,7 +27,7 @@ import {
 } from "./const";
 // import { createFileV2 } from "./rapiduploadTask";
 // import SparkMD5 from "spark-md5";
-// import { rapiduploadCreateFile } from "./rapiduploadTask";
+import { rapiduploadCreateFile } from "./rapiduploadTask";
 
 const listMinDelayMsec = 1000;
 const retryDelaySec = 30;
@@ -134,7 +134,6 @@ export default class GeneratebdlinkTask {
                 size: 0,
                 fs_id: '',
                 md5: '00000000000000000000000000000000',
-                md5s: '',
               });
             }
             setTimeout(() => {
@@ -211,7 +210,6 @@ export default class GeneratebdlinkTask {
                 size: 0,
                 fs_id: '',
                 md5: '00000000000000000000000000000000',
-                md5s: '',
               });
             }
             setTimeout(() => {
@@ -225,7 +223,6 @@ export default class GeneratebdlinkTask {
                   size: item.size,
                   fs_id: item.fs_id,
                   md5: "",
-                  md5s: "",
                 }); // 筛选文件(isdir=0)
               }
             });
@@ -324,9 +321,7 @@ export default class GeneratebdlinkTask {
           }
           file.size = data.list[0].size;
           file.fs_id = data.list[0].fs_id;
-          // 已开启极速生成, 直接取meta内的md5
           file.md5 = "";
-          file.md5s = "";
           this.getDlink(i);
         } else {
           file.errno = data.error_code;
@@ -562,20 +557,6 @@ export default class GeneratebdlinkTask {
       this.generateBdlink(i + 1);
       return;
     }
-
-    file.md5s = ''; // use short link only, skip md5s
-
-    /*
-    // 获取md5s, "极速生成" 跳过此步
-    if (file.size < 262144) file.md5s = file.md5; // 此时md5s=md5
-    else {
-      // 计算md5s
-      let spark = new SparkMD5.ArrayBuffer();
-      spark.append(data.response);
-      let sliceMd5 = spark.end();
-      file.md5s = sliceMd5;
-    }
-    */
     let interval = this.fileInfoList.length > 1 ? 2000 : 1000;
     setTimeout(() => {
       this.generateBdlink(i + 1);
@@ -606,7 +587,7 @@ export default class GeneratebdlinkTask {
     // 主要是因为频繁请求直链接口获取正确md5会导致#9019错误(即账号被限制), 对大批量生成秒传有很大影响, 极速生成功能使用此验证则可以节约请求以避免此问题
     // 为避免百度后面又改接口导致生成错误秒传问题, 这个接口特性我会写个定时脚本每天测试一次, 出了问题就能即使更新
     // 目前发现是通过秒传拿到的文件再生成秒传不会有这问题, 上传的文件或通过分享转存的别人上传的文件则会有
-    /*
+
     rapiduploadCreateFile.call(
       this,
       file,
@@ -635,7 +616,7 @@ export default class GeneratebdlinkTask {
       0,
       true
     );
-    */
+
   }
 
   /**
@@ -649,9 +630,7 @@ export default class GeneratebdlinkTask {
           path: item.path,
           size: item.size,
           fs_id: item.fs_id,
-          // 已开启极速生成, 直接取meta内的md5
           md5: "",
-          md5s: "",
         });
     }
   }
@@ -673,7 +652,6 @@ export default class GeneratebdlinkTask {
           size: item.size,
           fs_id: item.fs_id,
           md5: item.md5 && decryptMd5(item.md5.toLowerCase()),
-          md5s: item.md5s && decryptMd5(item.md5s.toLowerCase()),
         });
     }
   }
