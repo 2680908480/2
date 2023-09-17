@@ -172,7 +172,7 @@ export function rapiduploadCreateFile(
         file.path = suffixChange(file.path);
         rapiduploadCreateFile.call(this, file, onResponsed, onFailed);
       } else if (0 !== data.response.errno) {
-        onFailed(data.response.errno);
+        onFailed(data.response.errno === -6 ? 9019 : data.response.errno); // -6 亦视为 openapi授权码认证失败 报告为9019
       } else onResponsed(data);
     },
     onFailed,
