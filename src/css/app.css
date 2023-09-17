@@ -52,6 +52,13 @@
   border: none;
   margin-left: 8px;
 }
+.mzf_new_btn_icon_only {
+  padding: 8px 8px;
+}
+.mzf_new_btn_red {
+  background-color: #ffe8e8;
+  color: #DB3710;
+}
 #mzf-rapid-input.swal2-textarea {
   height: 10em;
 }

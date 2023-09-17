@@ -70,7 +70,7 @@ module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div 
 /***/ 149:
 /***/ ((module) => {
 
-module.exports = "/*自定义单选框样式*/\r\n.mzf_check {\r\n  display: inline-block;\r\n  background-color: white;\r\n  border-radius: 5px;\r\n  border: 1px solid #d3d3d3;\r\n  width: 20px;\r\n  height: 20px;\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  line-height: 20px;\r\n  margin-left: 10px;\r\n}\r\n.mzf_check_ori:checked + .mzf_check {\r\n  background-color: #eee;\r\n}\r\n.mzf_check_ori:checked + .mzf_check::after {\r\n  content: \"✓\";\r\n}\r\n.mzf_check_ori {\r\n  display: none;\r\n}\r\n\r\n/*新版度盘页面的按钮样式(直接拷贝)*/\r\n.mzf_new_btn {\r\n  -webkit-text-size-adjust: 100%;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-tap-highlight-color: transparent;\r\n  vertical-align: middle;\r\n  font: inherit;\r\n  overflow: visible;\r\n  text-transform: none;\r\n  font-family: SFUIText, PingFangSC-Regular, Helvetica Neue, Helvetica, Arial,\r\n    sans-serif;\r\n  display: inline-block;\r\n  line-height: 1;\r\n  white-space: nowrap;\r\n  cursor: pointer;\r\n  background: #fff;\r\n  text-align: center;\r\n  box-sizing: border-box;\r\n  outline: 0;\r\n  margin: 0;\r\n  transition: 0.1s;\r\n  color: #fff;\r\n  background-color: #06a7ff;\r\n  font-weight: 700;\r\n  padding: 8px 24px;\r\n  height: 32px;\r\n  font-size: 14px;\r\n  border-radius: 16px;\r\n  border: none;\r\n  margin-left: 8px;\r\n}\r\n#mzf-rapid-input.swal2-textarea {\r\n  height: 10em;\r\n}\r\n#mzf-accesstoken-input {\r\n  background: rgb(255, 252, 222);\r\n  font-size: 0.8em;\r\n  margin-left: 0;\r\n  margin-right: 0;\r\n}\r\n#mzf-accesstoken-input.mzf-auto-filled {\r\n  background: #EEE;\r\n}\r\n#mzf-accesstoken-acquire {\r\n  font-size: 0.8em;\r\n}"
+module.exports = "/*自定义单选框样式*/\r\n.mzf_check {\r\n  display: inline-block;\r\n  background-color: white;\r\n  border-radius: 5px;\r\n  border: 1px solid #d3d3d3;\r\n  width: 20px;\r\n  height: 20px;\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  line-height: 20px;\r\n  margin-left: 10px;\r\n}\r\n.mzf_check_ori:checked + .mzf_check {\r\n  background-color: #eee;\r\n}\r\n.mzf_check_ori:checked + .mzf_check::after {\r\n  content: \"✓\";\r\n}\r\n.mzf_check_ori {\r\n  display: none;\r\n}\r\n\r\n/*新版度盘页面的按钮样式(直接拷贝)*/\r\n.mzf_new_btn {\r\n  -webkit-text-size-adjust: 100%;\r\n  -webkit-font-smoothing: antialiased;\r\n  -webkit-tap-highlight-color: transparent;\r\n  vertical-align: middle;\r\n  font: inherit;\r\n  overflow: visible;\r\n  text-transform: none;\r\n  font-family: SFUIText, PingFangSC-Regular, Helvetica Neue, Helvetica, Arial,\r\n    sans-serif;\r\n  display: inline-block;\r\n  line-height: 1;\r\n  white-space: nowrap;\r\n  cursor: pointer;\r\n  background: #fff;\r\n  text-align: center;\r\n  box-sizing: border-box;\r\n  outline: 0;\r\n  margin: 0;\r\n  transition: 0.1s;\r\n  color: #fff;\r\n  background-color: #06a7ff;\r\n  font-weight: 700;\r\n  padding: 8px 24px;\r\n  height: 32px;\r\n  font-size: 14px;\r\n  border-radius: 16px;\r\n  border: none;\r\n  margin-left: 8px;\r\n}\r\n.mzf_new_btn_icon_only {\r\n  padding: 8px 8px;\r\n}\r\n.mzf_new_btn_red {\r\n  background-color: #ffe8e8;\r\n  color: #DB3710;\r\n}\r\n#mzf-rapid-input.swal2-textarea {\r\n  height: 10em;\r\n}\r\n#mzf-accesstoken-input {\r\n  background: rgb(255, 252, 222);\r\n  font-size: 0.8em;\r\n  margin-left: 0;\r\n  margin-right: 0;\r\n}\r\n#mzf-accesstoken-input.mzf-auto-filled {\r\n  background: #EEE;\r\n}\r\n#mzf-accesstoken-acquire {\r\n  font-size: 0.8em;\r\n}"
 
 /***/ }),
 
@@ -2261,7 +2261,7 @@ var htmlBtnRapidNew = // 新版界面秒传按钮的html元素
  '<button id="bdlink_btn" class="mzf_new_btn"></i><span>秒传</span></button>';
 var htmlBtnGenNew = // 新版界面秒传生成按钮的html元素
  '<button id="gen_bdlink_btn" class="mzf_new_btn"></i><span>生成秒传</span></button>';
-var htmlBtnDownload = '<button id="dl_file_btn" class="mzf_new_btn"></i><span>直接下载</span></button>';
+var htmlBtnDownload = '<button id="dl_file_btn" class="mzf_new_btn mzf_new_btn_icon_only mzf_new_btn_red" title="直接下载"></i><span class="u-icon-download"></span></button>';
 function installNew() {
     console.info("%s version: %s DOM方式安装 (new-ui)", TAG, version);
     swalInstance.swalGlobalArgs = {
@@ -2422,7 +2422,7 @@ function syncPage_loader_addBtn() {
 var htmlBtnGenShare = // 分享页的秒传生成按钮html元素
  '<a id="gen_bdlink_btn_sharePage" title="生成秒传" class="g-button g-button-blue-large" style="margin-right: 5px;margin-left: 5px;"> <span class="g-button-right"> <em class="icon icon-share" style="color:#ffffff" title="生成秒传"></em> <span class="text" style="width: auto;">生成秒传</span> </span> </a>';
 var loader_htmlBtnDownload = // 分享页的秒传生成按钮html元素
- '<a id="dl_file_btn_sharePage" title="直接下载" class="g-button g-button-red-large" style="margin-right: 5px;margin-left: 5px;"> <span class="g-button-right"> <em class="icon icon-download" style="color:#ffffff" title="直接下载"></em> <span class="text" style="width: auto;">直接下载</span> </span> </a>';
+ '<a id="dl_file_btn_sharePage" title="直接下载" class="g-button" style="margin-right: 5px;margin-left: 5px;border-color:#dfafaf"> <span class="g-button-right"><em class="icon icon-download" style="color:#DB3710" title="直接下载"></em></span> </a>';
 var htmlTagSahre = "[node-type=qrCode]";
 function installShare() {
     console.info("%s version: %s DOM方式安装", TAG, version);

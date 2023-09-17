@@ -22,7 +22,7 @@ const htmlBtnRapidNew = // 新版界面秒传按钮的html元素
 const htmlBtnGenNew = // 新版界面秒传生成按钮的html元素
   '<button id="gen_bdlink_btn" class="mzf_new_btn"></i><span>生成秒传</span></button>';
 const htmlBtnDownload =
-  '<button id="dl_file_btn" class="mzf_new_btn"></i><span>直接下载</span></button>';
+  '<button id="dl_file_btn" class="mzf_new_btn mzf_new_btn_icon_only mzf_new_btn_red" title="直接下载"></i><span class="u-icon-download"></span></button>';
 
 export default function installNew() {
   console.info("%s version: %s DOM方式安装 (new-ui)", TAG, version);
