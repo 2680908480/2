@@ -14,7 +14,6 @@ export const syncPathPrefix = "/_pcs_.workspace";
 export const create_url = `https://${host}/rest/2.0/xpan/file?method=create`; 
 export const createdir_url = `https://${host}/api/create?a=commit&clienttype=0&app_id=250528&web=1`; 
 export const precreate_url = `https://${host}/api/precreate`;
-// export const rapidupload_url = `https://${host}/api/rapidupload`;
 export const list_url = `https://${host}/rest/2.0/xpan/multimedia?method=listall&order=name&limit=${listLimit}&path=`;
 export const meta_url = `https://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&method=meta&path=`;
 export const meta_url2 = `https://${host}/api/filemetas?dlink=1&fsids=`;

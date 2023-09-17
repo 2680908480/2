@@ -56,7 +56,6 @@ const standardRetry = {
 // 普通生成:
 export default class GeneratebdlinkTask {
   isSharePage: boolean; // 分享页标记
-  isDownload: boolean; // 直接下载模式
   recursive: boolean; // 递归生成标记
   savePath: string;
   dirList: Array<string>;
@@ -72,7 +71,6 @@ export default class GeneratebdlinkTask {
   onHasNoDir: () => void;
 
   reset(): void {
-    this.isDownload = false;
     this.isSharePage = false;
     this.recursive = false;
     this.savePath = "";
@@ -432,11 +430,7 @@ export default class GeneratebdlinkTask {
         data = data.response;
         // 请求正常
         if (!data.errno) {
-          if (this.isDownload) {
-            this.directFileDownload(i, data.info[0].dlink);
-          } else {
-            this.acquireFileMd5(i, data.info[0].dlink);
-          }
+          this.acquireFileMd5(i, data.info[0].dlink);
           return;
         }
         // 请求报错
@@ -474,47 +468,6 @@ export default class GeneratebdlinkTask {
       (data) => {
         this.onProgress({ loaded: 100, total: 100 }); // 100%
         this.parseDownloadData(i, data);
-      },
-      (statusCode) => {
-        if (statusCode === 404) file.errno = 909;
-        else file.errno = statusCode;
-        this.generateBdlink(i + 1);
-      },
-      standardRetry
-    );
-  }
-
-  /**
-   * @description: 调用下载直链
-   * @param {number} i
-   * @param {string} dlink
-   */
-   directFileDownload(i: number, dlink: string): void {
-    let file = this.fileInfoList[i];
-    file.path
-    ajax(
-      {
-        url: dlink,
-        method: "GET",
-        responseType: "blob",
-        headers: {
-          Range: `bytes=0-${file.size}`,
-          "User-Agent": UA,
-        },
-        onprogress: this.onProgress,
-      },
-      (data) => {
-        this.onProgress({ loaded: 100, total: 100 }); // 100%
-        if (data.response.size !== file.size) {
-          file.errno = 413;
-        }
-        const tmpUrl = URL.createObjectURL(data.response);
-        const tmpLink = document.createElement('a');
-        tmpLink.href = tmpUrl;
-        tmpLink.download = file.path.replace(/^.*[\/\\]/, '');
-        tmpLink.click();
-        URL.revokeObjectURL(tmpUrl);
-        this.generateBdlink(i + 1);
       },
       (statusCode) => {
         if (statusCode === 404) file.errno = 909;

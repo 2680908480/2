@@ -203,15 +203,7 @@ export default class Swalbase {
   // 转存/生成过程中的弹窗
   processView(isGen: boolean) {
     let swalArg : any;
-    if (isGen && this.generatebdlinkTask.isDownload) {
-      swalArg = {
-        title: "直接下载中",
-        html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
-        willOpen: () => {
-          Swal.showLoading();
-        },
-      };
-    } else if (isGen) {
+    if (isGen) {
       swalArg = {
         title: "秒传生成中",
         html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -258,12 +250,11 @@ export default class Swalbase {
   }
   
   // 转存/生成秒传完成的弹窗
-  finishView(isGenTask: boolean) {
-    let fileInfoList = isGenTask
+  finishView(isGen: boolean) {
+    let fileInfoList = isGen
     ? this.generatebdlinkTask.fileInfoList
     : this.rapiduploadTask.fileInfoList;
-    const isGen = isGenTask && !this.generatebdlinkTask.isDownload;
-    let action = isGenTask && isGen ? "生成" : isGenTask ? "下载" : "转存";
+    let action = isGen ? "生成" : "转存";
     let parseResult = parsefileInfo(fileInfoList);
     this.parseResult = parseResult;
     let checkboxArg = {
@@ -289,7 +280,7 @@ export default class Swalbase {
       willOpen: () => {
         if (isGen) {
           GM_setValue("unClose", true); // 生成模式设置结果窗口未关闭的标记
-        } else if (successAny && !isGenTask) {
+        } else if (successAny && !isGen) {
           this.addOpenDirBtn(); // 转存模式时添加 "打开目录" 按钮
         }
       },
@@ -320,7 +311,7 @@ export default class Swalbase {
           return false;
         } else {
           // 转存模式, "确定" 按钮
-          if (!isGenTask) {
+          if (!isGen) {
             refreshList(); // 调用刷新文件列表的方法
           }
           return undefined;

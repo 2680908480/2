@@ -63,7 +63,7 @@ module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;borde
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.8</dt>\r\n      <dd>优化稳定性及改善错误时信息</dd>\r\n      <dd>直接下载功能 (仅适用于小文件!)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.8</dt>\r\n      <dd>优化稳定性及改善错误时信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -172,7 +172,6 @@ var ajaxError = 514; // 自定义ajax请求失败时的错误码(不能与http s
 var bdlinkPrefix = "https://pan.baidu.com/#bdlink="; // 一键秒传链接的前缀
 var commandList = ["set", "gen", "info"]; // 转存输入框内支持输入的命令
 var UA = "netdisk;"; // 自定义User-Agent
-var enableDirectDownload = false;
 var extCssUrl = {
     Default: "https://unpkg.com/@sweetalert2/theme-default@5.0.15/default.min.css",
     Dark: "https://unpkg.com/@sweetalert2/theme-dark@5.0.15/dark.min.css",
@@ -747,16 +746,7 @@ var Swalbase = /** @class */ (function () {
     Swalbase.prototype.processView = function (isGen) {
         var _this = this;
         var swalArg;
-        if (isGen && this.generatebdlinkTask.isDownload) {
-            swalArg = {
-                title: "直接下载中",
-                html: "<p>正在下载第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
-                willOpen: function () {
-                    external_Swal_default().showLoading();
-                },
-            };
-        }
-        else if (isGen) {
+        if (isGen) {
             swalArg = {
                 title: "秒传生成中",
                 html: "<p>正在生成第 <file_num>0</file_num> 个</p><p><gen_prog>正在获取文件列表...</gen_prog></p>",
@@ -805,13 +795,12 @@ var Swalbase = /** @class */ (function () {
         return bdlinks;
     };
     // 转存/生成秒传完成的弹窗
-    Swalbase.prototype.finishView = function (isGenTask) {
+    Swalbase.prototype.finishView = function (isGen) {
         var _this = this;
-        var fileInfoList = isGenTask
+        var fileInfoList = isGen
             ? this.generatebdlinkTask.fileInfoList
             : this.rapiduploadTask.fileInfoList;
-        var isGen = isGenTask && !this.generatebdlinkTask.isDownload;
-        var action = isGenTask && isGen ? "生成" : isGenTask ? "下载" : "转存";
+        var action = isGen ? "生成" : "转存";
         var parseResult = parsefileInfo(fileInfoList);
         this.parseResult = parseResult;
         var checkboxArg = {
@@ -829,7 +818,7 @@ var Swalbase = /** @class */ (function () {
                 if (isGen) {
                     GM_setValue("unClose", true); // 生成模式设置结果窗口未关闭的标记
                 }
-                else if (successAny && !isGenTask) {
+                else if (successAny && !isGen) {
                     _this.addOpenDirBtn(); // 转存模式时添加 "打开目录" 按钮
                 }
             }, 
@@ -856,7 +845,7 @@ var Swalbase = /** @class */ (function () {
                 }
                 else {
                     // 转存模式, "确定" 按钮
-                    if (!isGenTask) {
+                    if (!isGen) {
                         refreshList(); // 调用刷新文件列表的方法
                     }
                     return undefined;
@@ -1334,7 +1323,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
     function GeneratebdlinkTask() {
     }
     GeneratebdlinkTask.prototype.reset = function () {
-        this.isDownload = false;
         this.isSharePage = false;
         this.recursive = false;
         this.savePath = "";
@@ -1680,12 +1668,7 @@ var GeneratebdlinkTask = /** @class */ (function () {
             data = data.response;
             // 请求正常
             if (!data.errno) {
-                if (_this.isDownload) {
-                    _this.directFileDownload(i, data.info[0].dlink);
-                }
-                else {
-                    _this.acquireFileMd5(i, data.info[0].dlink);
-                }
+                _this.acquireFileMd5(i, data.info[0].dlink);
                 return;
             }
             // 请求报错
@@ -1718,44 +1701,6 @@ var GeneratebdlinkTask = /** @class */ (function () {
         }, function (data) {
             _this.onProgress({ loaded: 100, total: 100 }); // 100%
             _this.parseDownloadData(i, data);
-        }, function (statusCode) {
-            if (statusCode === 404)
-                file.errno = 909;
-            else
-                file.errno = statusCode;
-            _this.generateBdlink(i + 1);
-        }, standardRetry);
-    };
-    /**
-     * @description: 调用下载直链
-     * @param {number} i
-     * @param {string} dlink
-     */
-    GeneratebdlinkTask.prototype.directFileDownload = function (i, dlink) {
-        var _this = this;
-        var file = this.fileInfoList[i];
-        file.path;
-        ajax({
-            url: dlink,
-            method: "GET",
-            responseType: "blob",
-            headers: {
-                Range: "bytes=0-" + file.size,
-                "User-Agent": UA,
-            },
-            onprogress: this.onProgress,
-        }, function (data) {
-            _this.onProgress({ loaded: 100, total: 100 }); // 100%
-            if (data.response.size !== file.size) {
-                file.errno = 413;
-            }
-            var tmpUrl = URL.createObjectURL(data.response);
-            var tmpLink = document.createElement('a');
-            tmpLink.href = tmpUrl;
-            tmpLink.download = file.path.replace(/^.*[\/\\]/, '');
-            tmpLink.click();
-            URL.revokeObjectURL(tmpUrl);
-            _this.generateBdlink(i + 1);
         }, function (statusCode) {
             if (statusCode === 404)
                 file.errno = 909;
@@ -1911,7 +1856,6 @@ var syncPathPrefix = "/_pcs_.workspace";
 var create_url = "https://" + host + "/rest/2.0/xpan/file?method=create";
 var createdir_url = "https://" + host + "/api/create?a=commit&clienttype=0&app_id=250528&web=1";
 var precreate_url = "https://" + host + "/api/precreate";
-// export const rapidupload_url = `https://${host}/api/rapidupload`;
 var list_url = "https://" + host + "/rest/2.0/xpan/multimedia?method=listall&order=name&limit=" + listLimit + "&path=";
 var meta_url = "https://pcs.baidu.com/rest/2.0/pcs/file?app_id=778750&method=meta&path=";
 var meta_url2 = "https://" + host + "/api/filemetas?dlink=1&fsids=";
@@ -2262,7 +2206,6 @@ var htmlBtnRapidNew = // 新版界面秒传按钮的html元素
  '<button id="bdlink_btn" class="mzf_new_btn"></i><span>秒传</span></button>';
 var htmlBtnGenNew = // 新版界面秒传生成按钮的html元素
  '<button id="gen_bdlink_btn" class="mzf_new_btn"></i><span>生成秒传</span></button>';
-var htmlBtnDownload = '<button id="dl_file_btn" class="mzf_new_btn mzf_new_btn_icon_only mzf_new_btn_red" title="直接下载"></i><span class="u-icon-download"></span></button>';
 function installNew() {
     console.info("%s version: %s DOM方式安装 (new-ui)", TAG, version);
     swalInstance.swalGlobalArgs = {
@@ -2288,11 +2231,6 @@ function installNew() {
         swalInstance.generatebdlinkTask.reset();
         swalInstance.checkUnfinish();
     }); // 绑定生成秒传按钮事件
-    $(document).on("click", "#dl_file_btn", function () {
-        swalInstance.generatebdlinkTask.reset();
-        swalInstance.generatebdlinkTask.isDownload = true;
-        swalInstance.checkUnfinish();
-    });
     addBtn();
 }
 function addBtn() {
@@ -2302,9 +2240,6 @@ function addBtn() {
         target = $(htmlTagNew2);
     if (target.length && !$("#bdlink_btn").length) {
         target.append(htmlBtnRapidNew, htmlBtnGenNew);
-        if (enableDirectDownload) {
-            target.append(htmlBtnDownload);
-        }
     }
     setTimeout(addBtn, 500);
 }
@@ -2426,8 +2361,6 @@ function syncPage_loader_addBtn() {
 
 var htmlBtnGenShare = // 分享页的秒传生成按钮html元素
  '<a id="gen_bdlink_btn_sharePage" title="生成秒传" class="g-button g-button-blue-large" style="margin-right: 5px;margin-left: 5px;"> <span class="g-button-right"> <em class="icon icon-share" style="color:#ffffff" title="生成秒传"></em> <span class="text" style="width: auto;">生成秒传</span> </span> </a>';
-var loader_htmlBtnDownload = // 分享页的秒传生成按钮html元素
- '<a id="dl_file_btn_sharePage" title="直接下载" class="g-button" style="margin-right: 5px;margin-left: 5px;border-color:#dfafaf"> <span class="g-button-right"><em class="icon icon-download" style="color:#DB3710" title="直接下载"></em></span> </a>';
 var htmlTagSahre = "[node-type=qrCode]";
 function installShare() {
     console.info("%s version: %s DOM方式安装", TAG, version);
@@ -2440,19 +2373,10 @@ function installShare() {
         swalInstance.generatebdlinkTask.isSharePage = true;
         swalInstance.genFileWork(false, false);
     }); // 绑定生成按钮事件
-    $(document).on("click", "#dl_file_btn_sharePage", function () {
-        swalInstance.generatebdlinkTask.reset();
-        swalInstance.generatebdlinkTask.isSharePage = true;
-        swalInstance.generatebdlinkTask.isDownload = true;
-        swalInstance.genFileWork(false, false);
-    }); // 绑定生成按钮事件
 }
 function sharePage_loader_addBtn() {
     if ($(htmlTagSahre).length) {
         $(htmlTagSahre).before(htmlBtnGenShare);
-        if (enableDirectDownload) {
-            $(htmlTagSahre).before(loader_htmlBtnDownload);
-        }
     }
     else
         setTimeout(sharePage_loader_addBtn, 100);

@@ -4,7 +4,7 @@
  * @Description: 新版度盘界面loader入口: https://pan.baidu.com/disk/main
  */
 
-import { TAG, version, enableDirectDownload } from "@/common/const";
+import { TAG, version } from "@/common/const";
 import {
   setGetBdstoken,
   setGetUserId,
@@ -21,8 +21,6 @@ const htmlBtnRapidNew = // 新版界面秒传按钮的html元素
   '<button id="bdlink_btn" class="mzf_new_btn"></i><span>秒传</span></button>';
 const htmlBtnGenNew = // 新版界面秒传生成按钮的html元素
   '<button id="gen_bdlink_btn" class="mzf_new_btn"></i><span>生成秒传</span></button>';
-const htmlBtnDownload =
-  '<button id="dl_file_btn" class="mzf_new_btn mzf_new_btn_icon_only mzf_new_btn_red" title="直接下载"></i><span class="u-icon-download"></span></button>';
 
 export default function installNew() {
   console.info("%s version: %s DOM方式安装 (new-ui)", TAG, version);
@@ -50,11 +48,6 @@ export default function installNew() {
     swalInstance.generatebdlinkTask.reset();
     swalInstance.checkUnfinish();
   }); // 绑定生成秒传按钮事件
-  $(document).on("click", "#dl_file_btn", () => {
-    swalInstance.generatebdlinkTask.reset();
-    swalInstance.generatebdlinkTask.isDownload = true;
-    swalInstance.checkUnfinish();
-  });
   addBtn();
 }
 
@@ -64,9 +57,6 @@ function addBtn() {
   if (!target.length) target = $(htmlTagNew2);
   if (target.length && !$("#bdlink_btn").length) {
     target.append(htmlBtnRapidNew, htmlBtnGenNew);
-    if (enableDirectDownload) {
-      target.append(htmlBtnDownload);
-    }
   }
   setTimeout(addBtn, 500);
 }
