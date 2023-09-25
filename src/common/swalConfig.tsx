@@ -17,7 +17,8 @@ export const SwalConfig = {
     <input id="mzf-path-input" class="swal2-input" placeholder="保存路径, 示例: /GTA5/, 留空保存在当前目录" style="display: flex;margin-top: 10px;">
     <div style="display: flex;align-items:flex-end;margin: 10px 2em 0 2em;">
     <input id="mzf-accesstoken-input" class="swal2-input" placeholder="授权码 (留空则重用不变)" style="flex:1">
-    <a href="https://openapi.baidu.com/oauth/2.0/authorize?response_type=token&client_id=L6g70tBRRIXLsY0Z3HwKqlRE&redirect_uri=oob&scope=netdisk" class="swal2-styled" id="mzf-accesstoken-acquire" rel="noreferrer" target="_blank">获取</a>
+    <a href="https://pan.baidu.com/union/doc/Jl0j9pza3" class="swal2-styled" id="mzf-accesstoken-about" rel="noreferrer noopener" target="_blank">关于</a>
+    <a href="https://passport.baidu.com/accountbind" class="swal2-styled" id="mzf-accesstoken-manage" rel="noreferrer noopener" target="_blank">管理</a>
     </div>
     `,
     confirmButtonText: "确定",

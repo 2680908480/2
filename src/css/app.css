@@ -71,6 +71,6 @@
 #mzf-accesstoken-input.mzf-auto-filled {
   background: #EEE;
 }
-#mzf-accesstoken-acquire {
+#mzf-accesstoken-acquire, #mzf-accesstoken-manage, #mzf-accesstoken-about {
   font-size: 0.8em;
 }

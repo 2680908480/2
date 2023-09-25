@@ -16,8 +16,10 @@ function acquireAccessToken() : void {
       const requestId = request.substring(8);
       const match = document.location.hash.match(/&access_token=([^ =&]+)&/);
       if (match) {
-        GM_setValue("accessTokenRequest", `accessToken:${requestId}:${match[1]}`);
-        console.info("access-token = " + match[1]);
+        if (confirm("检测到授权码，是否采用？ (也可以手动复制此窗口url粘贴至授权码输入栏)")) {
+          GM_setValue("accessTokenRequest", `accessToken:${requestId}:${match[1]}`);
+          //console.info("access-token = " + match[1]);
+        }
       }
     }
   }
