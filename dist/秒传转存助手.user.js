@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           百度网盘秒传转存助手 支持PC及移动端 永久无广告绿色版
-// @version        3.1.9
+// @version        3.1.9.2
 // @author         tousakasp
 // @description    百度网盘秒传链接转存及生成 永久无广告绿色版 支持移动端界面 -- 再次感谢初代大佬伟大贡献
 // @match          *://pan.baidu.com/disk/home*
@@ -56,14 +56,14 @@
 /***/ 65:
 /***/ ((module) => {
 
-module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;border:2px solid #c3eaff;border-radius:4px;margin-left:5px;padding:10px;padding-top:5px;padding-bottom:5px;cursor:pointer}.mzf_btn2{text-align:center;color:#09aaff;margin-left:5px;cursor:pointer}.mzf_link{font-family:inherit;color:#09aaff;text-decoration:none;vertical-align:baseline}.mzf_text{font-feature-settings:\"lnum\";-webkit-font-smoothing:antialiased;font-family:inherit;color:#545454;font-weight:400;word-break:break-word;-webkit-tap-highlight-color:transparent;margin:0;padding:0;width:100%;height:34px;display:block;line-height:34px;text-align:center;white-space:nowrap}.mzf_arrow{margin-right:5px;transform:rotate(180deg);transition:transform .2s;fill:none;stroke:gray}.mzf_details{cursor:pointer}.mzf_details summary{white-space:nowrap}.mzf_content{max-height:0;margin:0;transition:max-height .5s;overflow:hidden}.mzf_details[open]>summary>svg{transform:rotate(0deg)}.mzf_details[open]+.mzf_content{max-height:100%}.mzf_html_container{grid-template-columns:minmax(0, 100%);align-self:center;justify-self:center;width:32em;max-width:100%}.mzf_updateInfo{border:1px #000;width:100%;margin:0 auto;text-align:left}.mzf_updateInfo dl{display:flex;flex-wrap:wrap;line-height:26px}.mzf_updateInfo dl>dt{font-family:monospace;font-size:.9em;color:#186a8c;flex-basis:3em;flex-grow:0;flex-shrink:0}.mzf_updateInfo dl>dt~dt,.mzf_updateInfo dl>dt~dt+dd{margin-top:.3em;border-top:1px solid #ccc}.mzf_updateInfo dl>dd{flex:1}.mzf_updateInfo dl>dd+dd{padding-left:3em;flex-basis:100%}.mzf_updateInfo span{vertical-align:baseline}"
+module.exports = ".mzf_btn{text-align:center;font-size:.85em;color:#09aaff;border:2px solid #c3eaff;border-radius:4px;margin-left:5px;padding:10px;padding-top:5px;padding-bottom:5px;cursor:pointer}.mzf_btn2{text-align:center;color:#09aaff;margin-left:5px;cursor:pointer}.mzf_link{font-family:inherit;color:#09aaff;text-decoration:none;vertical-align:baseline}.mzf_text{font-feature-settings:\"lnum\";-webkit-font-smoothing:antialiased;font-family:inherit;color:#545454;font-weight:400;word-break:break-word;-webkit-tap-highlight-color:transparent;margin:0;padding:0;width:100%;height:34px;display:block;line-height:34px;text-align:center;white-space:nowrap}.mzf_arrow{margin-right:5px;transform:rotate(180deg);transition:transform .2s;fill:none;stroke:gray}.mzf_details{cursor:pointer}.mzf_details summary{white-space:nowrap}.mzf_content{max-height:0;margin:0;transition:max-height .5s;overflow:hidden}.mzf_details[open]>summary>svg{transform:rotate(0deg)}.mzf_details[open]+.mzf_content{max-height:100%}.mzf_html_container{grid-template-columns:minmax(0, 100%);align-self:center;justify-self:center;width:32em;max-width:100%}.mzf_updateInfo{border:1px #000;width:100%;margin:0 auto;text-align:left}.mzf_updateInfo dl{display:flex;flex-wrap:wrap;line-height:26px}.mzf_updateInfo dl>dt{font-family:monospace;font-size:.8em;color:#186a8c;flex-basis:4em;flex-grow:0;flex-shrink:0}.mzf_updateInfo dl>dt~dt,.mzf_updateInfo dl>dt~dt+dd{margin-top:.3em;border-top:1px solid #ccc}.mzf_updateInfo dl>dd{flex:1}.mzf_updateInfo dl>dd+dd{padding-left:3em;flex-basis:100%}.mzf_updateInfo span{vertical-align:baseline}"
 
 /***/ }),
 
 /***/ 184:
 /***/ ((module) => {
 
-module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.9</dt>\r\n      <dd>自动获取授权码已被百度封禁，请自行获取</dd>\r\n      <dd></dd>\r\n      <dt>3.1.8.1</dt>\r\n      <dd>修正授权码失败时错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.8</dt>\r\n      <dd>优化稳定性及改善错误时信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"panel-body\" style=\"height: 220px;\">\r\n  <div class=\"mzf_updateInfo\">\r\n    <p>更新日志:</p>\r\n    <dl>\r\n      <dt>3.1.9.2</dt>\r\n      <dd>修正版本显示及增加错误码信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.9</dt>\r\n      <dd>默认授权应用已被百度封禁，请自行获取</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.8.1</dt>\r\n      <dd>修正授权码失败时错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.8</dt>\r\n      <dd>优化稳定性及改善错误时信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.7</dt>\r\n      <dd>改善每次登入无需重新获取授权码</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.6</dt>\r\n      <dd>恢复支持短链及标准链</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.5</dt>\r\n      <dd>改善错误信息</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.4</dt>\r\n      <dd>改用unpkg cdn</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.3</dt>\r\n      <dd>转存全失败时不添加打开目录按钮</dd>\r\n      <dd>外部库切换为使用CDN</dd>\r\n      <dd>更正代码内元数据</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.2</dt>\r\n      <dd>(只改名)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.1.1</dt>\r\n      <dd>修正移动版保存路径无效问题</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.9</dt>\r\n      <dd>有限度支持移动端界面</dd>\r\n      <dd>提醒20G及短链不支持 (256K以内支持)</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.8</dt>\r\n      <dd>修正生成重试时小BUG</dd>\r\n      <dd></dd>\r\n\r\n      <dt>3.0.7</dt>\r\n      <dd>优化秒传生成稳定性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.6</dt>\r\n      <dd>秒传支持空目录 (文件夹结构使用时)</dd>\r\n      <dd>增加随机大小写尝试次数</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.5</dt>\r\n      <dd>提高旧秒传兼容性</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.4</dt>\r\n      <dd>(没有发布)</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.3</dt>\r\n      <dd>改用rapidupload接口</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.2</dt>\r\n      <dd>3.0.2 修正404时正确报错</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.1</dt>\r\n      <dd>拒绝短秒传输入</dd>\r\n      <dd></dd>\r\n  \r\n      <dt>3.0.0</dt>\r\n      <dd>挽救秒传功能</dd>\r\n      <dd></dd>\r\n    </dl>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -158,9 +158,9 @@ var css_app_default = /*#__PURE__*/__webpack_require__.n(css_app);
  * @LastEditors: tousakasp
  * @Description: 存放各种全局常量对象
  */
-var version = "3.1.8.1"; // 当前版本号
-var updateDate = "23.9.16"; // 更新弹窗显示的日期
-var updateInfoVer = "3.1.8"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
+var version = "3.1.9.2"; // 当前版本号
+var updateDate = "26.9.16"; // 更新弹窗显示的日期
+var updateInfoVer = "3.1.9.2"; // 更新弹窗的版本, 没必要提示的非功能性更新就不弹窗了
 var swalCssVer = "3.1.6"; // 由于其他主题的Css代码会缓存到本地, 故更新主题包版本(url)时, 需要同时更新该字段以刷新缓存
 var locUrl = location.href;
 var baiduMobilePage = "baidu.com/wap/home";
@@ -1901,6 +1901,8 @@ function baiduErrno(errno) {
             return "请求错误";
         case 9019:
             return "请重新获取授权码";
+        case 20010:
+            return "授权应用已被禁用，请更改应用再次授权";
         case 403:
             return "接口限制访问";
         case 404:
