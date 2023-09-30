@@ -148,7 +148,7 @@ export function rapiduploadCreateFile(
   
   ajax(
     {
-      url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}`,
+      url: `${create_url}&access_token=${encodeURIComponent(this.accessToken)}${this.bdstoken ? "&bdstoken=" + this.bdstoken : ""}`, // bdstoken参数不能放在data里, 否则无效
       method: "POST",
       responseType: "json",
       
@@ -161,9 +161,7 @@ export function rapiduploadCreateFile(
       }),
       headers: {
         "cookie": "",
-        "Content-Type": "application/x-www-form-urlencoded",
       },
-      anonymous: true
     },
     (data) => {
       // console.log(data.response); // debug
@@ -172,7 +170,7 @@ export function rapiduploadCreateFile(
         file.path = suffixChange(file.path);
         rapiduploadCreateFile.call(this, file, onResponsed, onFailed);
       } else if (0 !== data.response.errno) {
-        onFailed(data.response.errno === -6 ? 9019 : data.response.errno); // -6 亦视为 openapi授权码认证失败 报告为9019
+        onFailed(data.response.errno);
       } else onResponsed(data);
     },
     onFailed,
