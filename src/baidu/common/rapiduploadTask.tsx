@@ -160,7 +160,7 @@ export function rapiduploadCreateFile(
         rtype: 0, // rtype=3覆盖文件, rtype=0则返回报错, 不覆盖文件, 默认为rtype=1 (自动重命名, 1和2是两种不同的重命名策略)
       }),
       headers: {
-        "cookie": "",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     },
     (data) => {
